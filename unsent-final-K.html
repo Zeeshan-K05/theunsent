@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Unsent — Words that needed to exist somewhere</title>
+<meta name="description" content="A space to release what was never said. Write letters you never sent. Read the ones others couldn't."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://unsent.cloud/"/>
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://unsent.cloud/"/>
+<meta property="og:title" content="Unsent — Words that needed to exist somewhere"/>
+<meta property="og:description" content="A space to release what was never said. Write letters you never sent. Read the ones others couldn't."/>
+<meta property="og:image" content="https://unsent.cloud/og.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="https://unsent.cloud/"/>
+<meta name="twitter:title" content="Unsent"/>
+<meta name="twitter:description" content="A space to release what was never said."/>
+<meta name="twitter:image" content="https://unsent.cloud/og.jpg"/>
+
+<!-- Favicon inline — no external files needed -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230b0906'/><line x1='7' y1='9' x2='23' y2='9' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/><line x1='23' y1='9' x2='7' y2='23' stroke='%23c85c3e' stroke-width='2.2' stroke-linecap='round'/><line x1='7' y1='23' x2='23' y2='23' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/></svg>"/>
+<meta name="theme-color" content="#0b0906"/>
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTPSK623KY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YTPSK623KY');
+  window.addEventListener('error', function(e) {
+    console.error('[Unsent Error]', e.message, e.filename, e.lineno);
+  });
+</script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://cmuilpkrbwtbdwuxocdf.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_B-aeW6Cy8DHzYB-s1uupGg_rBKvyPtJ';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0b0906;--surface:#111009;--card:#15120d;
+  --text:#f0e2cc;--muted:#7a6e63;--dim:#332a1f;--vdim:#1f1a13;
+  --accent:#c85c3e;--alow:#5a2516;--abright:#e06a48;
+  --gold:#b8953a;--goldlow:#3a2d10;
+  --border:#1e1912;--border2:#2a2318;--border3:#3a3025;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Crimson Pro','Georgia',serif;
+  --alt:'EB Garamond',Georgia,serif;
+}
+html,body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;overflow-x:hidden;}
+::selection{background:var(--alow);color:var(--text);}
+button{font-family:var(--body);cursor:pointer;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-12px);}to{opacity:1;transform:translateX(0);}}
+@keyframes scrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes feltBurst{0%{transform:scale(1);}40%{transform:scale(1.35);}70%{transform:scale(.95);}100%{transform:scale(1);}}
+@keyframes milestoneSlide{0%{opacity:0;transform:translateY(-40px) translateX(-50%);}15%{opacity:1;transform:translateY(0) translateX(-50%);}80%{opacity:1;transform:translateY(0) translateX(-50%);}100%{opacity:0;transform:translateY(-40px) translateX(-50%);}}
+.fade-up{animation:fadeUp .55s cubic-bezier(.22,1,.36,1) both;}
+.fade-in{animation:fadeIn .8s ease both;}
+.slide-in{animation:slideIn .4s ease both;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);background:rgba(11,9,6,.96);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;}
+.logo{background:none;border:none;cursor:pointer;color:var(--text);text-align:left;padding:0;}
+.logo span:first-child{font-family:var(--serif);font-size:1.45rem;font-style:italic;display:block;letter-spacing:.02em;}
+.logo span:last-child{font-size:.6rem;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;display:block;margin-top:-1px;}
+.nav-links{display:flex;gap:1.75rem;align-items:center;}
+.nav-btn{background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.92rem;letter-spacing:.07em;padding-bottom:3px;border-bottom:1px solid transparent;transition:all .2s;color:var(--muted);}
+.nav-btn.active{color:var(--text);border-bottom-color:var(--accent);}
+.nav-btn:not(.active):hover{color:var(--text);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:2px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--muted);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(11,9,6,.98);z-index:99;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;}
+.mobile-nav.open{display:flex;animation:fadeIn .25s ease;}
+.mobile-nav-btn{background:none;border:none;cursor:pointer;font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--muted);transition:color .2s;letter-spacing:.02em;}
+.mobile-nav-btn:hover,.mobile-nav-btn.active{color:var(--text);}
+.page{max-width:680px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.hidden{display:none!important;}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:.85rem 2rem;font-size:1rem;letter-spacing:.04em;transition:all .2s;}
+.btn-primary:hover{background:var(--abright);transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.3;cursor:not-allowed;transform:none;background:var(--accent);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border2);padding:.85rem 2rem;font-size:.95rem;letter-spacing:.04em;transition:all .2s;}
+.btn-ghost:hover{border-color:var(--muted);color:var(--text);}
+.btn-sm{padding:.5rem 1.2rem;font-size:.85rem;}
+input,textarea,select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;font-family:var(--body);font-size:1.05rem;line-height:1.75;outline:none;transition:border-color .25s;-webkit-appearance:none;}
+input:focus,textarea:focus,select:focus{border-color:var(--border3);}
+input::placeholder,textarea::placeholder{color:var(--dim);}
+textarea{resize:vertical;}
+label{display:block;color:var(--muted);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5rem;}
+.field{margin-bottom:1.6rem;}
+.char-counter{text-align:right;font-size:.72rem;color:var(--dim);margin-top:.3rem;transition:color .2s;}
+.char-counter.warn{color:var(--accent);}
+.pill{padding:.3rem .85rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;letter-spacing:.03em;}
+.pill:hover{border-color:var(--accent);color:var(--text);}
+.pill.active{border-color:var(--accent);color:var(--text);background:var(--alow);}
+.mood-pill{padding:.25rem .75rem;border:1px solid var(--border);background:transparent;color:var(--dim);font-family:var(--body);font-size:.78rem;transition:all .2s;letter-spacing:.03em;cursor:pointer;}
+.mood-pill:hover{border-color:var(--border2);color:var(--muted);}
+.mood-pill.sel{border-color:var(--accent);color:var(--text);background:var(--alow);}
+.letter-card{padding:1.5rem 0 1.5rem 1.5rem;border-left:1px solid var(--border2);border-bottom:1px solid var(--border);transition:border-left-color .3s;}
+.letter-card:hover{border-left-color:var(--alow);}
+.letter-card:last-child{border-bottom:none;}
+.letter-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;}
+.letter-to{font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;}
+.letter-to em{font-style:italic;color:var(--text);text-transform:none;letter-spacing:0;font-size:.85rem;}
+.letter-badges{display:flex;gap:.4rem;align-items:center;}
+.lang-badge{font-size:.56rem;color:var(--dim);border:1px solid var(--vdim);padding:.1rem .42rem;letter-spacing:.1em;}
+.mood-badge{font-size:.56rem;color:var(--dim);border:1px solid var(--vdim);padding:.1rem .42rem;letter-spacing:.06em;}
+.letter-body{font-size:1.07rem;line-height:1.95;font-style:italic;margin-bottom:1rem;color:var(--text);}
+.letter-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;}
+.letter-from{color:var(--dim);font-size:.82rem;}
+.letter-actions{display:flex;gap:.5rem;flex-wrap:wrap;}
+.felt-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.28rem .8rem;font-family:var(--body);font-size:.8rem;transition:all .2s;}
+.felt-btn:hover,.felt-btn.active{border-color:var(--accent);color:var(--accent);}
+.felt-btn.burst{animation:feltBurst .35s ease;}
+.share-btn{background:transparent;border:1px solid var(--border);color:var(--dim);padding:.28rem .7rem;font-family:var(--body);font-size:.78rem;transition:all .2s;}
+.share-btn:hover{border-color:var(--muted);color:var(--muted);}
+.read-time{font-size:.68rem;color:var(--vdim);letter-spacing:.05em;}
+.search-wrap{position:relative;margin-bottom:1.5rem;}
+.search-wrap input{padding-left:2.4rem;font-size:.95rem;}
+.search-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);color:var(--dim);font-size:.9rem;pointer-events:none;}
+.search-clear{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:.9rem;cursor:pointer;padding:0;transition:color .2s;}
+.search-clear:hover{color:var(--muted);}
+.lotd-strip{background:var(--surface);border:1px solid var(--border2);border-left:3px solid var(--accent);padding:1.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden;}
+.lotd-strip::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(200,92,62,.03));pointer-events:none;}
+.lotd-tag{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
+.lotd-text{font-size:1.05rem;line-height:1.9;font-style:italic;margin-bottom:.6rem;}
+.lotd-from{font-size:.8rem;color:var(--dim);}
+.featured-block{border-left:2px solid var(--alow);padding:0 0 0 1.5rem;margin-bottom:3rem;min-height:100px;}
+.feat-tag{color:var(--muted);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;}
+.feat-text{font-size:1.1rem;line-height:1.95;font-style:italic;margin-bottom:.85rem;}
+.feat-from{color:var(--vdim);font-size:.85rem;}
+.feat-dots{display:flex;gap:.4rem;margin-top:1.25rem;}
+.dot{width:4px;height:4px;background:var(--dim);border-radius:50%;cursor:pointer;transition:background .3s;}
+.dot.active{background:var(--accent);}
+.stats-bar{display:flex;gap:2rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-num{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--text);display:block;}
+.stat-label{font-size:.62rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:.1rem;display:block;}
+.testimonials-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 0;margin:3.5rem 0;overflow:hidden;position:relative;}
+.testimonials-section::before,.testimonials-section::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;}
+.testimonials-section::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.testimonials-section::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.marquee-label{text-align:center;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+.marquee-track{display:flex;gap:2rem;width:max-content;animation:scrollLeft 60s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.t-card{width:320px;flex-shrink:0;border:1px solid var(--border2);padding:1.5rem;background:var(--surface);position:relative;}
+.t-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--alow);}
+.t-quote{font-size:.97rem;line-height:1.85;font-style:italic;color:var(--text);margin-bottom:1rem;}
+.t-author{font-size:.72rem;color:var(--muted);letter-spacing:.06em;}
+.t-author strong{color:var(--dim);font-weight:400;}
+.anon-card{background:var(--surface);border:1px solid var(--border2);padding:1.25rem 1.5rem;margin-top:1rem;}
+.anon-card h4{font-family:var(--serif);font-size:1rem;font-weight:400;font-style:italic;margin-bottom:.3rem;}
+.anon-card p{color:var(--muted);font-size:.82rem;line-height:1.5;margin-bottom:1rem;}
+.price-tag{color:var(--accent);font-size:.85rem;margin-left:.35rem;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;animation:fadeIn .2s ease;}
+.modal{background:var(--card);border:1px solid var(--border2);max-width:480px;width:100%;padding:2rem;position:relative;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;transition:color .2s;}
+.modal-close:hover{color:var(--text);}
+.modal h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin-bottom:.4rem;}
+.modal p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;line-height:1.6;}
+.share-preview{background:var(--surface);border:1px solid var(--border);padding:1.25rem;margin-bottom:1.25rem;font-style:italic;font-size:.95rem;line-height:1.85;color:var(--text);}
+.sp-to{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;font-style:normal;}
+.copy-ok{color:var(--accent);font-size:.8rem;margin-top:.6rem;display:none;text-align:center;}
+.share-platforms{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap;}
+.share-platform-btn{flex:1;min-width:120px;padding:.65rem 1rem;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;text-align:center;letter-spacing:.04em;}
+.share-platform-btn:hover{border-color:var(--border3);color:var(--text);}
+.share-platform-btn.wa:hover{border-color:#25d366;color:#25d366;}
+.share-platform-btn.ig:hover{border-color:#e1306c;color:#e1306c;}
+.share-platform-btn.tw:hover{border-color:#1da1f2;color:#1da1f2;}
+.about-hero{margin-bottom:4rem;}
+.about-quote{font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.2rem);font-weight:400;line-height:1.35;font-style:italic;color:var(--text);margin-bottom:1.5rem;}
+.about-divider{width:40px;height:1px;background:var(--accent);margin:2.5rem 0;}
+.about-section{margin-bottom:3rem;}
+.about-section h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--muted);letter-spacing:.08em;margin-bottom:1rem;}
+.about-section p{font-size:1.05rem;line-height:1.95;color:var(--text);margin-bottom:1rem;}
+.about-section p:last-child{margin-bottom:0;}
+.about-section p.dim{color:var(--muted);}
+.about-rules{list-style:none;padding:0;}
+.about-rules li{padding:.85rem 0;border-bottom:1px solid var(--border);font-size:1rem;line-height:1.7;color:var(--text);display:flex;gap:1rem;align-items:flex-start;}
+.about-rules li:last-child{border-bottom:none;}
+.rule-num{color:var(--accent);font-size:.75rem;letter-spacing:.1em;font-family:var(--alt);margin-top:.25rem;flex-shrink:0;}
+.about-team{display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem;}
+.team-card{background:var(--surface);border:1px solid var(--border2);padding:1.25rem;}
+.team-card h4{font-family:var(--serif);font-size:1rem;font-style:italic;font-weight:400;margin-bottom:.25rem;}
+.team-card p{font-size:.85rem;color:var(--muted);line-height:1.6;}
+.about-cta{background:var(--surface);border:1px solid var(--border2);border-left:2px solid var(--accent);padding:1.75rem;margin-top:3rem;}
+.about-cta p{font-size:1.05rem;line-height:1.8;margin-bottom:1.25rem;font-style:italic;}
+.timeline{position:relative;padding-left:1.5rem;margin-top:1.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:1px;background:var(--border2);}
+.tl-item{position:relative;margin-bottom:1.75rem;}
+.tl-item::before{content:'';position:absolute;left:-1.5rem;top:.45rem;width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateX(-2px);}
+.tl-year{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;}
+.tl-text{font-size:.95rem;line-height:1.75;color:var(--muted);}
+.empty-state{text-align:center;padding:4rem 0;}
+.empty-state p:first-child{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--dim);margin-bottom:.5rem;}
+.empty-state p:last-child{font-size:.82rem;color:var(--vdim);}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card);border:1px solid var(--border2);color:var(--text);padding:.75rem 1.5rem;font-size:.85rem;letter-spacing:.04em;z-index:300;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s;opacity:0;pointer-events:none;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+/* Share card format buttons */
+.card-fmt-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.35rem .85rem;font-family:var(--body);font-size:.78rem;cursor:pointer;transition:all .2s;letter-spacing:.03em;}
+.card-fmt-btn:hover{border-color:var(--muted);color:var(--text);}
+.card-fmt-btn.active{border-color:var(--accent);color:var(--text);background:var(--alow);}
+
+footer{border-top:1px solid var(--border);padding:1.75rem 2rem;text-align:center;}
+footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
+.success-screen{text-align:center;padding:5rem 0;}
+.success-screen .big{font-family:var(--serif);font-size:2.5rem;font-style:italic;margin-bottom:.75rem;animation:fadeUp .6s ease;}
+.success-screen .sub{color:var(--muted);line-height:1.7;animation:fadeUp .6s .15s ease both;}
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:200;transition:width .1s;}
+#home-footer-text{max-width:680px;margin:0 auto;padding:0 2rem 4rem;}
+
+/* ─── V5 NEW ─── */
+/* Private Toggle */
+.private-toggle-row{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border2);padding:1rem 1.25rem;margin-top:1rem;}
+.ptl-label strong{font-family:var(--serif);font-size:.95rem;font-weight:400;font-style:italic;color:var(--text);display:block;margin-bottom:.15rem;}
+.ptl-label span{font-size:.76rem;color:var(--muted);line-height:1.5;}
+.toggle-switch{position:relative;width:42px;height:24px;flex-shrink:0;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;background:var(--dim);border-radius:24px;cursor:pointer;transition:background .25s;}
+.toggle-track::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .25s;}
+.toggle-switch input:checked + .toggle-track{background:var(--gold);}
+.toggle-switch input:checked + .toggle-track::after{transform:translateX(18px);}
+.private-hint{font-size:.72rem;color:var(--gold);padding:.4rem 0;opacity:.8;}
+/* Felt milestone */
+.felt-milestone{position:fixed;top:5rem;left:50%;background:var(--card);border:1px solid var(--border2);border-top:2px solid var(--accent);padding:.9rem 1.5rem;font-size:.88rem;font-style:italic;color:var(--text);z-index:250;white-space:nowrap;animation:milestoneSlide 4.5s ease forwards;pointer-events:none;}
+/* Tabs */
+.tab-row{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid var(--border);}
+.tab-btn{background:none;border:none;color:var(--muted);font-family:var(--body);font-size:.88rem;letter-spacing:.06em;padding:.6rem 1.1rem;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;}
+.tab-btn.active{color:var(--text);border-bottom-color:var(--accent);}
+.tab-btn:hover:not(.active){color:var(--text);}
+/* Collections */
+.col-card{background:var(--surface);border:1px solid var(--border2);padding:1.5rem;margin-bottom:1.25rem;cursor:pointer;transition:border-color .2s;position:relative;overflow:hidden;}
+.col-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--alow);transition:background .2s;}
+.col-card:hover{border-color:var(--border3);}
+.col-card:hover::before{background:var(--accent);}
+.col-tag{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+.col-title{font-family:var(--serif);font-size:1.15rem;font-weight:400;font-style:italic;margin-bottom:.5rem;line-height:1.35;}
+.col-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
+.col-meta{font-size:.72rem;color:var(--dim);display:flex;gap:1rem;}
+.col-letters{display:none;}
+.col-letters.open{display:block;animation:fadeUp .35s ease;}
+/* Archive */
+.archive-letter{padding:1.25rem 0 1.25rem 1.25rem;border-left:1px solid var(--goldlow);border-bottom:1px solid var(--border);}
+.archive-letter:last-child{border-bottom:none;}
+.archive-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;}
+.archive-to{font-size:.68rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;opacity:.7;}
+.archive-date{font-size:.65rem;color:var(--dim);}
+.archive-body{font-size:1rem;line-height:1.85;font-style:italic;color:var(--text);margin-bottom:.7rem;}
+.archive-actions{display:flex;gap:.5rem;}
+.archive-btn{background:transparent;border:1px solid var(--border);color:var(--dim);padding:.2rem .65rem;font-family:var(--body);font-size:.75rem;transition:all .2s;}
+.archive-btn:hover{border-color:var(--border3);color:var(--muted);}
+/* Tiers */
+.tier-card{background:var(--surface);border:1px solid var(--border2);padding:1.25rem 1.5rem;}
+.tier-card.gold-tier{border-color:var(--gold);background:rgba(58,45,16,.15);}
+.tier-price{font-size:1.4rem;color:var(--text);font-family:var(--serif);}
+.tier-features{list-style:none;padding:0;margin:.75rem 0 1rem;}
+.tier-features li{font-size:.82rem;color:var(--muted);padding:.2rem 0;display:flex;gap:.5rem;}
+.tier-features li::before{content:'—';color:var(--dim);flex-shrink:0;}
+/* Physical card */
+.card-preview{background:var(--surface);border:1px solid var(--border2);padding:1.5rem;margin:1rem 0;font-family:var(--alt);font-style:italic;line-height:2;color:var(--text);font-size:1rem;min-height:110px;position:relative;}
+.card-preview::after{content:'unsent.cloud';position:absolute;bottom:.75rem;right:1rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-style:normal;font-family:var(--body);}
+
+/* ─── FROM NEW DOC ─── */
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+.tw-cursor{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:3px;vertical-align:middle;animation:blink 1s step-end infinite;}
+/* Burn */
+.burn-toggle{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:border-color .2s;user-select:none;}
+.burn-toggle:hover{border-color:var(--accent);}
+.burn-toggle.active{border-color:var(--accent);background:var(--alow);}
+.burn-icon{font-size:1rem;transition:transform .3s;}
+.burn-toggle.active .burn-icon{transform:scale(1.2);}
+.burn-label{font-size:.88rem;color:var(--muted);transition:color .2s;}
+.burn-toggle.active .burn-label{color:var(--text);}
+.burn-badge{font-size:.62rem;background:var(--accent);color:#fff;padding:.1rem .4rem;letter-spacing:.06em;margin-left:.4rem;vertical-align:middle;}
+/* Reply */
+.reply-thread{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.reply-item{padding:.75rem 0 .75rem 1rem;border-left:1px solid var(--vdim);margin-bottom:.5rem;}
+.reply-item:last-child{margin-bottom:0;}
+.reply-text{font-size:.9rem;line-height:1.8;font-style:italic;color:var(--muted);}
+.reply-from{font-size:.72rem;color:var(--dim);margin-top:.3rem;}
+.reply-input-wrap{margin-top:.85rem;display:flex;gap:.5rem;}
+.reply-input-wrap input{flex:1;font-size:.9rem;padding:.6rem .85rem;}
+.reply-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.6rem 1rem;font-family:var(--body);font-size:.82rem;white-space:nowrap;transition:all .2s;}
+.reply-btn:hover{border-color:var(--accent);color:var(--text);}
+.reply-toggle{background:transparent;border:none;color:var(--dim);font-family:var(--body);font-size:.78rem;cursor:pointer;padding:0;letter-spacing:.03em;transition:color .2s;}
+.reply-toggle:hover{color:var(--muted);}
+/* City filter */
+.city-filter-wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.city-filter-wrap label{margin-bottom:0;font-size:.65rem;}
+.city-select{width:auto;padding:.35rem .75rem;font-size:.82rem;border:1px solid var(--border2);background:var(--surface);color:var(--muted);}
+/* Dead page */
+.dead-header{text-align:center;padding:2rem 0 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.dead-header h2{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:400;font-style:italic;line-height:1.4;margin-bottom:.85rem;}
+.dead-header p{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto;}
+.dead-card{padding:1.75rem 0 1.75rem 1.5rem;border-left:1px solid var(--border);border-bottom:1px solid var(--border);}
+.dead-card:last-child{border-bottom:none;}
+.dead-to{font-size:.68rem;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.7rem;}
+.dead-body{font-size:1.05rem;line-height:1.95;font-style:italic;color:var(--muted);margin-bottom:.75rem;}
+.dead-from{font-size:.8rem;color:var(--vdim);}
+.dead-note{background:var(--surface);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:2.5rem;text-align:center;}
+.dead-note p{font-size:.88rem;color:var(--dim);line-height:1.7;}
+/* Capsule */
+.capsule-feature{border:1px solid var(--border2);padding:2rem;margin-bottom:2rem;background:var(--surface);position:relative;overflow:hidden;}
+.capsule-feature::after{content:'✉';position:absolute;right:1.5rem;bottom:1rem;font-size:5rem;opacity:.04;line-height:1;}
+.timeline-item{padding:1.25rem 0 1.25rem 1.5rem;border-left:1px solid var(--border2);position:relative;}
+.timeline-item::before{content:'';position:absolute;left:-4px;top:1.6rem;width:7px;height:7px;background:var(--alow);border:1px solid var(--accent);border-radius:50%;}
+.timeline-date{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
+.timeline-to{font-size:.78rem;color:var(--dim);margin-bottom:.3rem;}
+.timeline-preview{font-size:.92rem;font-style:italic;color:var(--text);line-height:1.7;}
+/* Digest */
+.digest-bar{background:var(--surface);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:680px;margin:0 auto 2rem;}
+.digest-bar p{font-size:.9rem;color:var(--muted);flex:1;min-width:200px;}
+.digest-bar p em{color:var(--text);font-style:normal;}
+.digest-form{display:flex;gap:.5rem;flex-shrink:0;}
+.digest-form input{width:auto;padding:.55rem .85rem;font-size:.88rem;border:1px solid var(--border2);}
+.digest-form button{background:var(--accent);color:#fff;border:none;padding:.55rem 1.1rem;font-family:var(--body);font-size:.85rem;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.digest-form button:hover{background:var(--abright);}
+.digest-ok{color:var(--accent);font-size:.8rem;margin-top:.4rem;display:none;width:100%;}
+/* About personal */
+.about-body{font-size:1.08rem;line-height:2;color:var(--muted);margin-bottom:1.5rem;}
+.about-body em{color:var(--text);font-style:italic;}
+.about-pull{font-family:var(--serif);font-size:1.25rem;font-style:italic;font-weight:400;color:var(--text);line-height:1.6;margin-bottom:2rem;}
+
+@media(max-width:640px){
+  .capsule-steps-strip{flex-direction:column;}
+  .capsule-steps-strip .cs-divider-v{width:100%;height:1px;}
+  nav{padding:1rem 1.25rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .page{padding:2.5rem 1.25rem 4rem;}
+  .stats-bar{gap:1.2rem;}
+  .letter-actions{gap:.35rem;}
+  .share-platforms{flex-direction:column;}
+  .share-platform-btn{min-width:unset;}
+  footer{padding:1.25rem;}
+  .modal{padding:1.5rem;}
+  .about-quote{font-size:1.4rem;}
+  .felt-milestone{font-size:.78rem;padding:.75rem 1rem;}
+}
+
+/* Admin */
+.admin-letter-row{border:1px solid var(--border2);padding:1.25rem 1.5rem;margin-bottom:1rem;background:var(--surface);transition:border-color .2s;}
+.admin-letter-row.is-hidden{opacity:.45;border-color:var(--border);border-left:3px solid var(--accent);}
+.admin-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem;flex-wrap:wrap;}
+.admin-to{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.admin-to em{text-transform:none;letter-spacing:0;color:var(--text);font-size:.88rem;}
+.admin-date{font-size:.72rem;color:var(--dim);}
+.admin-felt{font-size:.72rem;color:var(--muted);}
+.admin-body{font-size:.97rem;line-height:1.8;color:var(--text);font-style:italic;margin-bottom:.85rem;}
+.admin-actions{display:flex;gap:.6rem;align-items:center;}
+.admin-hide-btn,.admin-show-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.3rem .8rem;font-family:var(--body);font-size:.78rem;cursor:pointer;transition:all .2s;}
+.admin-hide-btn:hover{border-color:var(--accent);color:var(--accent);}
+.admin-show-btn:hover{border-color:var(--gold);color:var(--gold);}
+.admin-filter-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.35rem .9rem;font-family:var(--body);font-size:.8rem;cursor:pointer;letter-spacing:.04em;transition:all .2s;}
+.admin-filter-btn.active{border-color:var(--accent);color:var(--text);background:var(--alow);}
+.admin-status{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .5rem;border:1px solid;}
+.admin-status.visible{color:var(--gold);border-color:var(--goldlow);}
+.admin-status.hidden-status{color:var(--accent);border-color:var(--alow);}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress-bar" style="width:0"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<nav>
+  <button class="logo" onclick="showPage('home')">
+    <span>Unsent</span>
+    <span>World</span>
+  </button>
+  <div class="nav-links">
+    <button class="nav-btn active" id="nav-home" onclick="showPage('home')">Home</button>
+    <button class="nav-btn" id="nav-write" onclick="showPage('write')">Write</button>
+    <button class="nav-btn" id="nav-letters" onclick="showPage('letters')">Letters</button>
+    <button class="nav-btn" id="nav-dead" onclick="showPage('dead')" style="color:#4a3a2f;">To the gone</button>
+    <button class="nav-btn" id="nav-about" onclick="showPage('about')">About</button>
+    <button style="background:var(--alow);border:1px solid var(--accent);color:var(--text);font-family:var(--body);font-size:.82rem;padding:.28rem .85rem;cursor:pointer;letter-spacing:.04em;transition:all .2s;" onclick="showPage('capsule')">⏳ Capsule</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-btn" id="mnav-home" onclick="showPage('home');toggleMobileNav()">Home</button>
+  <button class="mobile-nav-btn" id="mnav-write" onclick="showPage('write');toggleMobileNav()">Write</button>
+  <button class="mobile-nav-btn" id="mnav-letters" onclick="showPage('letters');toggleMobileNav()">Letters</button>
+  <button class="mobile-nav-btn" id="mnav-dead" onclick="showPage('dead');toggleMobileNav()" style="color:#4a3a2f;">To the gone</button>
+  <button class="mobile-nav-btn" id="mnav-about" onclick="showPage('about');toggleMobileNav()">About</button>
+  <button class="mobile-nav-btn" id="mnav-capsule" onclick="showPage('capsule');toggleMobileNav()" style="color:var(--accent);">⏳ Capsule</button>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page fade-up" style="position:relative;z-index:1;">
+  <p id="home-tagline" style="color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;margin-bottom:2rem;opacity:0;transition:opacity 1.2s ease 0.3s;">A space to release what was never said</p>
+  <h1 id="home-headline" style="font-family:var(--serif);font-size:clamp(1.9rem,5vw,3rem);font-weight:400;line-height:1.35;margin-bottom:3rem;min-height:6rem;">
+    <span id="tw-out"></span><span class="tw-cursor" id="tw-cursor"></span>
+  </h1>
+  <p id="home-letter-count" style="font-size:.75rem;color:var(--dim);letter-spacing:.06em;margin-bottom:3rem;"></p>
+  <div class="featured-block" id="featured-block">
+    <p class="feat-tag" id="f-to"></p>
+    <p class="feat-text" id="f-content"></p>
+    <p class="feat-from" id="f-from"></p>
+    <div class="feat-dots" id="f-dots"></div>
+  </div>
+  <div style="display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:3rem;">
+    <button class="btn-primary" onclick="showPage('write')">Write your letter</button>
+    <button class="btn-ghost" onclick="showPage('letters')">Read all letters →</button>
+  </div>
+
+  <!-- Manifesto -->
+  <div style="padding:2.5rem 0;border-top:1px solid var(--border);">
+    <p style="font-family:var(--serif);font-size:clamp(1.15rem,3vw,1.55rem);font-weight:400;font-style:italic;line-height:1.65;color:var(--text);margin-bottom:.75rem;">You've been carrying someone's name<br>in your chest for a long time.</p>
+    <p style="font-size:.92rem;color:var(--dim);letter-spacing:.04em;">This is where you can put it down.</p>
+  </div>
+</div>
+
+<div id="testimonials-home" class="testimonials-section">
+  <p class="marquee-label">What people felt</p>
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+<div id="home-footer-text">
+  <p style="color:var(--vdim);font-size:.75rem;letter-spacing:.04em;line-height:1.8;border-top:1px solid var(--border);padding-top:1.25rem;">One rule: no names that could hurt someone. Everything else — say it.</p>
+</div>
+
+<!-- WRITE -->
+<div id="page-write" class="page hidden fade-up">
+  <div id="write-form">
+    <h2 style="font-family:var(--serif);font-size:1.7rem;font-weight:400;margin-bottom:.4rem;">Write your letter</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:2.5rem;line-height:1.6;">No judgement. No audience. Just you and the words you've been holding.</p>
+
+    <div class="field">
+      <label>To</label>
+      <input id="w-to" type="text" placeholder="my mother, my ex, the version of me at 16…" oninput="checkForm()"/>
+    </div>
+    <div class="field">
+      <label>From <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(leave blank to stay anonymous)</span></label>
+      <input id="w-from" type="text" placeholder="Your name (optional)"/>
+    </div>
+    <div class="field">
+      <label>Language</label>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+        <button class="pill active" id="lang-EN" onclick="setLang('EN')">English</button>
+        <button class="pill" id="lang-HI" onclick="setLang('HI')">हिंदी</button>
+        <button class="pill" id="lang-HX" onclick="setLang('Hinglish')">Hinglish</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Mood <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(optional)</span></label>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;" id="mood-pills">
+        <button class="mood-pill" onclick="setMood('grief')">grief</button>
+        <button class="mood-pill" onclick="setMood('love')">love</button>
+        <button class="mood-pill" onclick="setMood('rage')">rage</button>
+        <button class="mood-pill" onclick="setMood('guilt')">guilt</button>
+        <button class="mood-pill" onclick="setMood('longing')">longing</button>
+        <button class="mood-pill" onclick="setMood('gratitude')">gratitude</button>
+        <button class="mood-pill" onclick="setMood('relief')">relief</button>
+        <button class="mood-pill" onclick="setMood('closure')">closure</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Your letter</label>
+      <textarea id="w-content" rows="11" placeholder="Say everything you never could…" oninput="checkForm();updateCounter()"></textarea>
+      <div class="char-counter" id="char-counter">0 words · 0 characters</div>
+    </div>
+
+    <div class="field">
+      <label>Options</label>
+      <div class="burn-toggle" id="burn-toggle" onclick="toggleBurn()">
+        <span class="burn-icon">🕯</span>
+        <span class="burn-label">Burn after reading <span class="burn-badge">24hr</span></span>
+        <span style="margin-left:auto;font-size:.75rem;color:var(--dim);" id="burn-state">Off</span>
+      </div>
+      <p style="font-size:.72rem;color:var(--vdim);line-height:1.6;margin-top:.5rem;">Letter disappears from the feed after 24 hours. Nothing stays.</p>
+    </div>
+
+    <div class="field">
+      <label>City <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(optional)</span></label>
+      <input id="w-city" type="text" placeholder="Your city…"/>
+    </div>
+
+    <!-- V5: PRIVATE TOGGLE -->
+    <div class="private-toggle-row">
+      <div class="ptl-label">
+        <strong>Keep this just for me</strong>
+        <span>Private letters never appear in the feed. Saved to your archive only.</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="private-toggle" onchange="togglePrivate()"/>
+        <div class="toggle-track"></div>
+      </label>
+    </div>
+    <p class="private-hint hidden" id="private-hint">🔒 This letter will stay yours alone.</p>
+
+    <!-- ANON / PHYSICAL (fade when private) -->
+    <div id="delivery-section">
+      <p style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Coming soon</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.75rem;">
+
+        <!-- ANON SEND -->
+        <div style="background:var(--surface);border:1px solid var(--border2);padding:1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--alow),transparent);"></div>
+          <p style="font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;border:1px solid var(--alow);display:inline-block;padding:.15rem .5rem;">Anonymous Send</p>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:.5rem;line-height:1.4;">Send it to them.<br>They'll never know.</p>
+          <p style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">"The cost of a stamp, for something that needed to be said."</p>
+          <button onclick="joinWaitlist('anonymous-send')" style="background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.4rem .85rem;font-family:var(--body);font-size:.75rem;letter-spacing:.04em;transition:all .2s;width:100%;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">Join waitlist →</button>
+        </div>
+
+        <!-- PHYSICAL CARD -->
+        <div style="background:var(--surface);border:1px solid var(--border2);padding:1.5rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--goldlow),transparent);"></div>
+          <p style="font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;border:1px solid var(--goldlow);display:inline-block;padding:.15rem .5rem;">Physical Card</p>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:400;font-style:italic;color:var(--text);margin-bottom:.5rem;line-height:1.4;">Handwritten. Mailed.<br>No sender name.</p>
+          <p style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">Recycled matte card. Kraft envelope. Anywhere in the world.</p>
+          <button onclick="joinWaitlist('physical-card')" style="background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.4rem .85rem;font-family:var(--body);font-size:.75rem;letter-spacing:.04em;transition:all .2s;width:100%;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">Join waitlist →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:1.75rem;display:flex;gap:.85rem;flex-wrap:wrap;">
+      <button class="btn-primary" id="release-btn" onclick="releaseLetter(false)" disabled>Release it</button>
+    </div>
+  </div>
+
+  <div id="write-success" class="success-screen hidden">
+    <p class="big" id="success-msg">Released.</p>
+    <p class="sub" id="success-sub">Your words are out in the world now.</p>
+  </div>
+</div>
+
+<!-- LETTERS -->
+<div id="page-letters" class="page hidden fade-up">
+  <h2 style="font-family:var(--serif);font-size:1.7rem;font-weight:400;margin-bottom:.35rem;">Letters from everywhere</h2>
+  <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;" id="letter-count"></p>
+
+  <!-- V5: TABS -->
+  <div class="tab-row">
+    <button class="tab-btn active" id="tab-feed" onclick="switchTab('feed')">All Letters</button>
+    <button class="tab-btn" id="tab-collections" onclick="switchTab('collections')">Collections</button>
+    <button class="tab-btn" id="tab-archive" onclick="switchTab('archive')">My Archive</button>
+  </div>
+
+  <!-- FEED -->
+  <div id="ltab-feed">
+    <div class="city-filter-wrap">
+      <label>City</label>
+      <select class="city-select" id="city-filter" onchange="renderLetters()">
+        <option value="all">All cities</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="London">London</option>
+        <option value="New York">New York</option>
+        <option value="Toronto">Toronto</option>
+        <option value="Dubai">Dubai</option>
+        <option value="Singapore">Singapore</option>
+        <option value="Sydney">Sydney</option>
+        <option value="Lahore">Lahore</option>
+        <option value="Dhaka">Dhaka</option>
+      </select>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search-input" placeholder="Search by recipient, feeling, name…" oninput="renderLetters(true)"/>
+      <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none;">✕</button>
+    </div>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem;" id="mood-filter-pills"></div>
+    <div id="letters-feed"></div>
+    <div id="no-letters" class="hidden">
+      <div class="empty-state"><p>No letters here yet.</p><p>Be the first to write one.</p></div>
+    </div>
+  </div>
+
+  <!-- V5: COLLECTIONS -->
+  <div id="ltab-collections" class="hidden">
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.75rem;line-height:1.65;">Curated gatherings of letters that found each other.</p>
+    <div class="col-card" onclick="toggleCol('fathers')">
+      <p class="col-tag">Collection 01</p>
+      <p class="col-title">Letters to fathers who worked in silence</p>
+      <p class="col-desc">The men who showed up every morning, said nothing that counted, and somehow said everything.</p>
+      <div class="col-meta"><span>4 letters</span><span>grief · love · guilt</span><span id="ct-fathers">Read collection ↓</span></div>
+      <div class="col-letters" id="cl-fathers"></div>
+    </div>
+    <div class="col-card" onclick="toggleCol('3am')">
+      <p class="col-tag">Collection 02</p>
+      <p class="col-title">Letters written at 3am</p>
+      <p class="col-desc">Something about the hour makes honesty harder to avoid. Written when pretending was too exhausting to keep up.</p>
+      <div class="col-meta"><span>4 letters</span><span>longing · grief · rage</span><span id="ct-3am">Read collection ↓</span></div>
+      <div class="col-letters" id="cl-3am"></div>
+    </div>
+    <div class="col-card" onclick="toggleCol('funeral')">
+      <p class="col-tag">Collection 03</p>
+      <p class="col-title">Things we couldn't say at the funeral</p>
+      <p class="col-desc">Grief has a dress code. The words that stayed stuck in our throats while everyone said the right things.</p>
+      <div class="col-meta"><span>4 letters</span><span>grief · closure · guilt</span><span id="ct-funeral">Read collection ↓</span></div>
+      <div class="col-letters" id="cl-funeral"></div>
+    </div>
+  </div>
+
+  <!-- V5: ARCHIVE -->
+  <div id="ltab-archive" class="hidden">
+    <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.5rem;">Your private letters. Only you can read them.</p>
+    <div id="archive-feed"></div>
+    <div id="archive-empty" class="hidden" style="text-align:center;padding:2.5rem 0;">
+      <p style="font-family:var(--serif);font-style:italic;color:var(--dim);margin-bottom:.5rem;">No private letters yet.</p>
+      <p style="font-size:.8rem;color:var(--vdim);">Toggle "Keep this just for me" when you write.</p>
+    </div>
+    <!-- Tier upsell always in archive -->
+    <div style="margin-top:2.5rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;">Unsent Private</p>
+      <div class="tier-card gold-tier">
+        <p style="font-family:var(--serif);font-size:1rem;font-style:italic;margin-bottom:.25rem;">Keep writing. Keep it all.</p>
+        <p class="tier-price">₹199 <span style="font-size:.8rem;color:var(--muted);font-family:var(--body);">/ month</span></p>
+        <ul class="tier-features">
+          <li>Unlimited private letters, saved forever</li>
+          <li>Download all your letters as a PDF</li>
+          <li>Letters never go public — ever</li>
+          <li>Early access to curated collections</li>
+        </ul>
+        <button class="btn-primary" onclick="openModal('private-tier-modal')" style="width:100%;padding:.7rem 1rem;font-size:.9rem;">Start your archive · ₹199/mo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page hidden fade-up">
+  <p style="color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;margin-bottom:3.5rem;">About</p>
+
+  <div style="border-left:2px solid var(--alow);padding-left:2rem;margin-bottom:3.5rem;">
+    <p class="about-pull">It hits you in the middle of the day.</p>
+    <p class="about-body">Not when you're ready for it. Not when you have space for it. When you're at your desk. Distracted. Functioning.</p>
+    <p class="about-body">Then something small — <em>her handwriting somewhere. A song. A coffee cup that looks like hers.</em> And suddenly there's a rush. Everything gets irritating. Your eyes fill. You step out. Light a cigarette. Try to come back.</p>
+    <p class="about-body">But from that moment — she's on your mind for the rest of the day. And you have nowhere to put any of it.</p>
+    <p class="about-body" style="color:var(--dim);">No one to call. Nothing to send. Just the weight of words that exist but have nowhere to go.</p>
+    <p class="about-pull" style="margin-top:2rem;">I built this for that moment.</p>
+    <p class="about-body">Not to fix it. Not to move on. Just to have somewhere to put the words.</p>
+    <p class="about-body" style="color:var(--text);">Because sometimes that's enough.</p>
+  </div>
+
+  <!-- ZK Founder mark -->
+  <div style="padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;">
+    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+
+      <!-- NEW MONOGRAM: Z and K equal, present, crossing -->
+      <div style="flex-shrink:0;width:80px;height:80px;">
+        <svg width="80" height="80" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- outer ring -->
+          <circle cx="130" cy="130" r="112" fill="none" stroke="#1a130d" stroke-width="1"/>
+          <circle cx="130" cy="130" r="104" fill="none" stroke="#150f09" stroke-width="0.5"/>
+
+          <!-- K — gold, equal weight, permanent -->
+          <line x1="96" y1="48" x2="96" y2="212" stroke="#b8953a" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="96" y1="128" x2="162" y2="52" stroke="#b8953a" stroke-width="4" stroke-linecap="round"/>
+          <line x1="96" y1="128" x2="162" y2="208" stroke="#b8953a" stroke-width="4" stroke-linecap="round"/>
+          <!-- K serif feet -->
+          <line x1="88" y1="212" x2="104" y2="212" stroke="#b8953a" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <line x1="88" y1="48" x2="104" y2="48" stroke="#b8953a" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+
+          <!-- Z — red, sharp, here -->
+          <line x1="78" y1="68" x2="162" y2="68" stroke="#c85c3e" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="162" y1="68" x2="78" y2="192" stroke="#c85c3e" stroke-width="4" stroke-linecap="round"/>
+          <line x1="78" y1="192" x2="162" y2="192" stroke="#c85c3e" stroke-width="4.5" stroke-linecap="round"/>
+
+          <!-- THE CROSSING POINT — where Z diagonal meets K spine -->
+          <circle cx="96" cy="128" r="10" fill="none" stroke="#c85c3e" stroke-width="0.75" opacity="0.25"/>
+          <circle cx="96" cy="128" r="7" fill="#0b0906" stroke="#b8953a" stroke-width="1" opacity="0.6"/>
+          <circle cx="96" cy="128" r="4.5" fill="#0b0906"/>
+          <!-- left half: gold — K's side -->
+          <path d="M96,123.5 A4.5,4.5 0 0,0 96,132.5 Z" fill="#b8953a" opacity="0.9"/>
+          <!-- right half: red — Z's side -->
+          <path d="M96,123.5 A4.5,4.5 0 0,1 96,132.5 Z" fill="#c85c3e" opacity="0.9"/>
+          <!-- centre dot -->
+          <circle cx="96" cy="128" r="1.5" fill="#f0e2cc" opacity="0.6"/>
+
+          <!-- base hairline -->
+          <line x1="50" y1="236" x2="210" y2="236" stroke="#2a1a0f" stroke-width="0.75"/>
+        </svg>
+      </div>
+
+      <div>
+        <p style="font-size:.85rem;color:var(--muted);font-style:italic;line-height:1.7;">Built by Z. Exists because of K.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The rule -->
+  <div style="position:relative;padding:1.75rem 1.75rem 1.75rem 2rem;border:1px solid var(--border2);margin-bottom:3rem;">
+    <div style="position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+    <p style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">The one rule</p>
+    <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;line-height:1.8;color:var(--text);">No names that could hurt someone.<br>Everything else — say it.</p>
+  </div>
+
+  <div style="text-align:center;padding:1rem 0 2rem;">
+    <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;line-height:1.7;">You found this place for a reason.</p>
+    <button class="btn-primary" onclick="showPage('write')">Write your letter</button>
+  </div>
+</div>
+
+<!-- SHARE MODAL — Image Card Generator -->
+<div id="share-modal" class="modal-overlay hidden">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-close" onclick="closeModal('share-modal')">✕</button>
+    <h3>Share this letter</h3>
+    <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.25rem;line-height:1.6;">Download as an image card — ready for Instagram, WhatsApp, or X.</p>
+
+    <!-- Format toggle -->
+    <div style="display:flex;gap:.5rem;margin-bottom:1.25rem;">
+      <button class="card-fmt-btn active" id="fmt-story" onclick="setCardFormat('story')">Stories (9:16)</button>
+      <button class="card-fmt-btn" id="fmt-square" onclick="setCardFormat('square')">Square (1:1)</button>
+      <button class="card-fmt-btn" id="fmt-wide" onclick="setCardFormat('wide')">Wide (16:9)</button>
+    </div>
+
+    <!-- Canvas preview -->
+    <div style="position:relative;margin-bottom:1.25rem;background:var(--surface);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:180px;">
+      <canvas id="share-canvas" style="max-width:100%;height:auto;display:block;"></canvas>
+      <div id="canvas-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:.8rem;color:var(--dim);letter-spacing:.12em;">Rendering…</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:.6rem;margin-bottom:.85rem;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="downloadCard()" style="flex:1;min-width:120px;">↓ Download image</button>
+      <button class="share-platform-btn wa" onclick="shareViaWhatsApp()" style="flex:1;min-width:100px;">WhatsApp text</button>
+      <button class="share-platform-btn tw" onclick="shareViaTwitter()" style="flex:1;min-width:100px;">X / Twitter</button>
+    </div>
+
+    <button onclick="copyLetter()" style="width:100%;background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.65rem;font-family:var(--body);font-size:.85rem;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--muted)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">Copy letter text only</button>
+    <div class="copy-ok" id="copy-ok">Copied ✓</div>
+  </div>
+</div>
+
+<!-- ANON MODAL (repriced ₹99) -->
+<div id="anon-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('anon-modal')">✕</button>
+    <h3>One last step</h3>
+    <p>Your letter is ready. Complete the ₹99 payment to send it anonymously.</p>
+    <div style="background:var(--surface);border:1px solid var(--border2);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <p style="font-size:.82rem;color:var(--muted);">Anonymous delivery to</p>
+          <p style="font-size:.9rem;color:var(--text);margin-top:.2rem;" id="modal-target"></p>
+        </div>
+        <div style="font-size:1.1rem;color:var(--accent);">₹99</div>
+      </div>
+      <p style="font-size:.78rem;color:var(--dim);margin-top:.6rem;font-style:italic;">"The cost of a stamp, for something that needed to be said."</p>
+    </div>
+    <button class="btn-primary" onclick="fakePayment()" style="width:100%;">Pay ₹99 via Razorpay</button>
+    <p style="font-size:.72rem;color:var(--dim);margin-top:.75rem;text-align:center;line-height:1.6;">Your identity stays hidden · No refunds once sent</p>
+  </div>
+</div>
+
+<!-- V5: PHYSICAL CARD MODAL -->
+<div id="physical-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('physical-modal')">✕</button>
+    <h3>Send it as a card</h3>
+    <p>Printed handwritten-style, mailed anywhere in the world. ₹299.</p>
+    <div class="card-preview"><em id="card-preview-text" style="color:var(--muted);">Your letter will appear here…</em></div>
+    <p style="font-size:.72rem;color:var(--dim);margin-bottom:1.25rem;font-style:italic;">Recycled matte card · Kraft envelope · No sender name</p>
+    <div class="field">
+      <label>Delivery address</label>
+      <textarea id="card-address" rows="3" placeholder="Full address, city, PIN code…"></textarea>
+    </div>
+    <div class="field">
+      <label>Partner note <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(optional, printed inside)</span></label>
+      <input id="card-note" type="text" placeholder="A small line, if you want one."/>
+    </div>
+    <button class="btn-primary" onclick="fakeCardPayment()" style="width:100%;">Send this card · ₹299</button>
+    <p style="font-size:.72rem;color:var(--dim);margin-top:.75rem;text-align:center;line-height:1.6;">Delivered in 5–7 working days · No return address</p>
+  </div>
+</div>
+
+<!-- V5: PRIVATE TIER MODAL -->
+<div id="private-tier-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('private-tier-modal')">✕</button>
+    <h3 style="font-family:var(--serif);color:var(--gold);font-style:italic;">Unsent Private</h3>
+    <p style="font-style:italic;color:var(--text);font-size:.95rem;margin-bottom:.5rem;">"Some things are only meant for you."</p>
+    <p>A personal archive for everything you write but never share.</p>
+    <div style="border:1px solid var(--goldlow);padding:1.25rem;margin-bottom:1.25rem;background:rgba(58,45,16,.1);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+        <span style="font-family:var(--serif);font-style:italic;">Private archive</span>
+        <span style="font-size:1.2rem;color:var(--gold);">₹199<span style="font-size:.75rem;color:var(--muted);font-family:var(--body);">/month</span></span>
+      </div>
+      <ul class="tier-features">
+        <li>Unlimited private letters, saved forever</li>
+        <li>Download all your letters as a formatted PDF</li>
+        <li>Letters never go public — ever</li>
+        <li>Early access to curated collections</li>
+        <li>No ads, no prompts, no pressure</li>
+      </ul>
+    </div>
+    <button class="btn-primary" onclick="closeModal('private-tier-modal');showToast('Redirecting to payment…')" style="width:100%;">Start archive · ₹199/month</button>
+    <p style="font-size:.72rem;color:var(--dim);margin-top:.75rem;text-align:center;line-height:1.6;">Cancel anytime · Your letters stay even if you cancel</p>
+  </div>
+</div>
+
+<!-- TO THE GONE -->
+<div id="page-dead" class="page hidden fade-up">
+  <div class="dead-header">
+    <p style="color:var(--dim);letter-spacing:.2em;text-transform:uppercase;font-size:.65rem;margin-bottom:1.5rem;">A sacred space</p>
+    <h2>To the ones<br>who are no longer here.</h2>
+    <p style="margin-top:1rem;">Some letters can never reach anyone. This is where they go anyway. No likes. No sharing. No replies. Just your words, and theirs.</p>
+  </div>
+  <div class="dead-note"><p>Write to someone you have lost. A parent. A friend. A version of someone before they changed. This space is private, sacred, and permanent.</p></div>
+  <div id="dead-form">
+    <div class="field"><label>To</label><input id="d-to" type="text" placeholder="my nana, my best friend Rahul, my father…" oninput="checkDead()"/></div>
+    <div class="field"><label>From <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(leave blank to stay anonymous)</span></label><input id="d-from" type="text" placeholder="Your name (optional)"/></div>
+    <div class="field"><label>Your letter</label><textarea id="d-content" rows="10" placeholder="Say what you never got to say…" oninput="checkDead()"></textarea></div>
+    <button class="btn-primary" id="d-submit" onclick="submitDead()" disabled>Place this letter</button>
+  </div>
+  <div id="dead-success" class="hidden" style="text-align:center;padding:3.5rem 0;">
+    <p style="font-family:var(--serif);font-size:1.8rem;font-style:italic;margin-bottom:.75rem;">Placed.</p>
+    <p style="color:var(--muted);line-height:1.8;">They would have wanted to hear this.</p>
+  </div>
+  <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;"/>
+  <div id="dead-feed-wrap">
+    <p style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:2rem;">Letters left here</p>
+    <div id="dead-feed"></div>
+    <div id="dead-empty" style="text-align:center;padding:3rem 0;"><p style="color:var(--vdim);font-style:italic;font-family:var(--serif);">No letters yet.<br>Be the first to place one.</p></div>
+  </div>
+</div>
+
+<!-- CAPSULE -->
+<div id="page-capsule" class="page hidden fade-up">
+
+  <!-- Capsule icon -->
+  <div style="margin-bottom:2rem;">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- envelope body -->
+      <rect x="4" y="12" width="40" height="28" rx="1" stroke="#5a2516" stroke-width="1.5" fill="none"/>
+      <!-- envelope flap open -->
+      <polyline points="4,12 24,27 44,12" stroke="#c85c3e" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <!-- wax seal circle -->
+      <circle cx="24" cy="36" r="5" stroke="#c85c3e" stroke-width="1" fill="#0b0906"/>
+      <!-- seal mark inside -->
+      <path d="M21.5 36 L24 33.5 L26.5 36 L24 38.5 Z" fill="#c85c3e" opacity="0.7"/>
+      <!-- time dots above -->
+      <circle cx="16" cy="7" r="1.5" fill="#5a2516"/>
+      <circle cx="24" cy="5" r="1.5" fill="#c85c3e"/>
+      <circle cx="32" cy="7" r="1.5" fill="#5a2516"/>
+    </svg>
+  </div>
+
+  <p style="color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.62rem;margin-bottom:1rem;">Time Capsule</p>
+  <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:400;line-height:1.3;margin-bottom:.85rem;">Write to who<br><em>you'll become.</em></h2>
+  <p style="color:var(--muted);line-height:1.85;margin-bottom:2.5rem;font-size:.97rem;">You'll forget you wrote this. That's the point. When it arrives — months or years from now — it will feel like a letter from someone who knew you better than anyone.</p>
+
+  <!-- Step strip -->
+  <div style="display:flex;border:1px solid var(--border2);background:var(--surface);margin-bottom:2.5rem;">
+    <div style="flex:1;padding:1.5rem 1.25rem;text-align:center;">
+      <span style="display:block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem;">01</span>
+      <span style="font-size:.85rem;color:var(--muted);line-height:1.7;">Write honestly.<br>No one reads it but future you.</span>
+    </div>
+    <div style="width:1px;background:var(--border2);flex-shrink:0;"></div>
+    <div style="flex:1;padding:1.5rem 1.25rem;text-align:center;">
+      <span style="display:block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem;">02</span>
+      <span style="font-size:.85rem;color:var(--muted);line-height:1.7;">Choose when<br>it arrives.</span>
+    </div>
+    <div style="width:1px;background:var(--border2);flex-shrink:0;"></div>
+    <div style="flex:1;padding:1.5rem 1.25rem;text-align:center;">
+      <span style="display:block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem;">03</span>
+      <span style="font-size:.85rem;color:var(--muted);line-height:1.7;">We deliver it.<br>You'll have forgotten.</span>
+    </div>
+  </div>
+
+  <!-- Form card -->
+  <div id="capsule-form-wrap" style="border:1px solid var(--border2);border-top:2px solid var(--accent);background:var(--surface);padding:2rem;">
+    <p style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;">Begin your letter</p>
+
+    <div class="field">
+      <label>Your letter</label>
+      <textarea id="c-content" rows="10" placeholder="Dear me,&#10;&#10;Right now I am feeling…" oninput="checkCapsule()"></textarea>
+    </div>
+
+    <!-- Two column: contact + time -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem;">
+      <div>
+        <label>Deliver to <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(email or WhatsApp)</span></label>
+        <input id="c-contact" type="text" placeholder="your@email.com or 98XXXXXXXX" oninput="checkCapsule()"/>
+      </div>
+      <div>
+        <label>Open in</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;" id="delay-options">
+          <button class="delay-opt" onclick="selectDelay(this,'3')" data-val="3" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">3 months</button>
+          <button class="delay-opt" onclick="selectDelay(this,'6')" data-val="6" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">6 months</button>
+          <button class="delay-opt" onclick="selectDelay(this,'12')" data-val="12" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">1 year</button>
+          <button class="delay-opt" onclick="selectDelay(this,'24')" data-val="24" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">2 years</button>
+        </div>
+        <input type="hidden" id="c-delay"/>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1.25rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1rem;">
+      <p style="font-size:.72rem;color:var(--dim);line-height:1.6;">Free forever · Encrypted until delivery day</p>
+      <button id="c-submit" onclick="submitCapsule()" disabled style="background:var(--alow);border:1px solid var(--accent);color:var(--text);padding:.85rem 1.75rem;font-family:var(--serif);font-size:1rem;font-style:italic;letter-spacing:.04em;cursor:pointer;transition:all .25s;white-space:nowrap;">✧ &nbsp;Seal the capsule</button>
+    </div>
+  </div>
+
+  <div id="capsule-success" class="hidden" style="text-align:center;padding:4rem 0;">
+    <p style="font-size:2rem;color:var(--accent);margin-bottom:1rem;">✧</p>
+    <p style="font-family:var(--serif);font-size:2rem;font-style:italic;margin-bottom:.75rem;">Sealed.</p>
+    <p style="color:var(--muted);line-height:1.8;" id="capsule-success-msg"></p>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;"/>
+  <div id="capsule-vault">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Your sealed capsules</p>
+      <span style="font-size:.85rem;opacity:.35;">🔒</span>
+    </div>
+    <div id="capsule-list"></div>
+    <div id="capsule-empty" class="hidden" style="text-align:center;padding:2rem 0;">
+      <p style="font-family:var(--serif);font-style:italic;color:var(--dim);margin-bottom:.4rem;">Nothing sealed yet.</p>
+      <p style="font-size:.78rem;color:var(--vdim);">Write your first letter above.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIGEST BAR (shown on letters page) -->
+<div id="digest-bar" class="digest-bar hidden">
+  <p>Every Sunday — <em>one unsent letter</em> delivered to your inbox. Nothing else.</p>
+  <div>
+    <div class="digest-form">
+      <input id="digest-email" type="email" placeholder="your@email.com"/>
+      <button onclick="subscribeDigest()">Subscribe</button>
+    </div>
+    <div class="digest-ok" id="digest-ok">You're in. See you Sunday. ✓</div>
+  </div>
+</div>
+
+<!-- WAITLIST MODAL -->
+
+<!-- ADMIN PAGE -->
+<div id="page-admin" class="page hidden fade-up">
+  <div id="admin-lock" style="max-width:400px;margin:6rem auto;text-align:center;padding:2rem;">
+    <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;">Admin Access</p>
+    <h2 style="font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.6rem;margin-bottom:2rem;">Enter password</h2>
+    <input id="admin-pw-input" type="password" placeholder="Password"
+      style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--text);padding:.85rem 1rem;font-family:var(--body);font-size:1rem;margin-bottom:1rem;"
+      onkeydown="if(event.key==='Enter')checkAdminPw()"/>
+    <button onclick="checkAdminPw()"
+      style="width:100%;background:var(--alow);border:1px solid var(--accent);color:var(--text);padding:.85rem;font-family:var(--serif);font-style:italic;font-size:1rem;cursor:pointer;">
+      Enter
+    </button>
+    <p id="admin-pw-error" class="hidden" style="color:var(--accent);font-size:.85rem;margin-top:1rem;">Incorrect password.</p>
+  </div>
+
+  <div id="admin-panel" class="hidden" style="max-width:860px;margin:0 auto;padding:2rem 1.5rem 6rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border2);">
+      <div>
+        <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;">Admin</p>
+        <h2 style="font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.6rem;">All Letters</h2>
+      </div>
+      <div style="display:flex;gap:.75rem;align-items:center;">
+        <span id="admin-letter-count" style="font-size:.82rem;color:var(--muted);"></span>
+        <button onclick="loadAdminLetters()" style="background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.4rem .9rem;font-family:var(--body);font-size:.82rem;cursor:pointer;">↻ Refresh</button>
+        <button onclick="adminLogout()" style="background:transparent;border:1px solid var(--border2);color:var(--muted);padding:.4rem .9rem;font-family:var(--body);font-size:.82rem;cursor:pointer;">Log out</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+      <button class="admin-filter-btn active" id="afilter-all" onclick="setAdminFilter('all')">All</button>
+      <button class="admin-filter-btn" id="afilter-pending" onclick="setAdminFilter('pending')">Pending</button>
+      <button class="admin-filter-btn" id="afilter-visible" onclick="setAdminFilter('visible')">Visible</button>
+      <button class="admin-filter-btn" id="afilter-hidden" onclick="setAdminFilter('hidden')">Hidden</button>
+    </div>
+
+    <div id="admin-loading" style="text-align:center;padding:4rem;color:var(--muted);font-style:italic;">Loading letters…</div>
+    <div id="admin-feed"></div>
+  </div>
+</div>
+
+<div id="waitlist-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('waitlist-modal')">✕</button>
+    <h3 id="waitlist-title">Join the waitlist</h3>
+    <p id="waitlist-desc">Be the first to know when this goes live. No spam — one email when it's ready.</p>
+    <div class="field">
+      <label>Your email or WhatsApp</label>
+      <input id="waitlist-contact" type="text" placeholder="your@email.com or 98XXXXXXXX"/>
+    </div>
+    <button class="btn-primary" onclick="submitWaitlist()" style="width:100%;">Notify me when it's live</button>
+    <div id="waitlist-ok" class="hidden" style="text-align:center;margin-top:1rem;font-size:.85rem;color:var(--accent);font-style:italic;">You're on the list. We'll reach out first.</div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    unsent.cloud · words that needed to exist somewhere · 
+    <span style="cursor:pointer;text-decoration:underline;text-underline-offset:3px;" onclick="showPage('about')">our story</span> · 
+    <a href="/privacy" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">privacy</a> · 
+    <a href="/terms" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">terms</a> · 
+    <span onclick="showPage('admin')" style="cursor:pointer;color:var(--border2);font-size:.7rem;user-select:none;" title="admin">·</span>
+  </p>
+</footer>
+
+<script>
+const TESTIMONIALS=[
+  {quote:"My father worked 26 years in a government job he hated so I could study engineering. I got placed, moved to Pune, send money home every month. We talk every Sunday. He asks about food, weather, office. In 32 years we have never once said anything real to each other. I wrote him a 4 page letter at 1am on a Tuesday. Told him I see what he gave up. Told him I know. I didn't send it. Some things are too big for WhatsApp.",author:"Deepak, 32",location:"Nagpur"},
+  {quote:"My husband and I have been married 6 years. We don't fight. We don't laugh either. We just exist in the same house. I wrote a letter to the girl I was at 22 standing at the mandap thinking this is fine, this is enough, log kya kahenge. I wanted to tell her — it's not fine. You deserved to ask for more.",author:"Anonymous",location:"Noida"},
+  {quote:"My best friend got married last year. Before that we spoke every day for 8 years. Now it's been 4 months since her last reply. I still wrote her a letter. Told her I miss her and that I feel stupid for missing her this much when she's literally alive and fine. Just not here anymore.",author:"Ritika, 26",location:"Indore"},
+  {quote:"Papa ki death ke baad ghar mein unka phone mila. Last call mera tha. Maine receive nahi kiya tha. Meeting mein tha. Yeh baat teen saal se andar hi thi. Aaj pehli baar kisi ko boli — chahe woh ek website hi kyun na ho.",author:"Anonymous",location:""},
+  {quote:"I was the first in my family to go to college. Everyone was proud. No one asked if I was okay. I wasn't. I wrote a letter to that boy. Told him he wasn't pretending to belong. He was just early.",author:"Sameer, 29",location:"Surat"},
+  {quote:"I wrote to my mother in law. Not to send. Just to say what I swallow every single day at the dinner table with a smile. My hands were shaking the whole time.",author:"Anonymous",location:"Chennai"},
+  {quote:"I left a 7 year relationship because my parents didn't approve. I got married to someone else. I am okay. But I wrote him a letter anyway — not because I want him back. Just because I never got to mourn it properly.",author:"Pooja, 33",location:"Delhi"},
+  {quote:"Three years of therapy couldn't make me say what I wrote here in 11 minutes. I think it's because no one was watching.",author:"Rohan, 29",location:"Delhi"},
+  {quote:"I wrote to my father who passed away last March. I told him I forgave him for leaving before I could. The letter went nowhere. But somehow it reached him.",author:"Anonymous",location:"Mumbai"},
+];
+
+const BASE_LETTERS=[
+  {id:1,to:"my father",from:"Anonymous",lang:"EN",mood:"grief",content:"I never told you how proud I was to be your daughter. Not because you didn't deserve to hear it — but because in our house, we didn't say things like that. We just cooked extra food and stayed up late. I hope you knew anyway.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:2,to:"my younger self",from:"Priya",lang:"EN",mood:"longing",content:"Stop trying so hard to be what everyone else needs you to be. The loneliness you feel right now? It's not a flaw. It's just the gap between who you are and who you haven't met yet.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:3,to:"meri maa",from:"Anonymous",lang:"HI",mood:"longing",content:"तुमने कभी नहीं कहा कि तुम्हें मुझ पर गर्व है। शायद तुम्हें नहीं पता था कि मुझे इसकी कितनी ज़रूरत थी। मैं अभी भी उस एक बात का इंतज़ार करता हूँ।",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:4,to:"my ex best friend",from:"Anonymous",lang:"EN",mood:"grief",content:"You stopped calling after my promotion. I don't think you even realized you did it. That's somehow the part that hurts the most.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:5,to:"the boy from the bus",from:"Shreya",lang:"EN",mood:"longing",content:"We talked every morning for two years. You got off at Andheri. I never asked your name. I wonder if you remember those conversations the way I do.",felt:0,feltByMe:false,private:false,city:'Mumbai',burn:false,burnAt:null,replies:[]},
+  {id:6,to:"mere aap",from:"Arjun",lang:"Hinglish",mood:"gratitude",content:"Yaar, tune jo sacrifice kiya apni family ke liye — log usse weakness samajhte hain. I see it as the bravest thing you ever did. Khud ko thoda credit de.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:7,to:"my boss",from:"Anonymous",lang:"EN",mood:"rage",content:"I quit because of you. Not because the work was hard. Because you made me feel invisible every single day, and I started to believe it.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:8,to:"my sister",from:"Anonymous",lang:"Hinglish",mood:"love",content:"Tu hamesha mujhse zyada samajhdaar lagi sab ko. But I was the one who held you when you cried at 2am. I never needed credit. I just needed you to remember.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:9,to:"the city I left",from:"Meera",lang:"EN",mood:"longing",content:"Delhi, I resented you for 22 years. The heat, the noise, the way you made women feel unsafe in their own streets. I moved to Bangalore and found myself missing you in a way I can't explain to people who didn't grow up inside you.",felt:0,feltByMe:false,private:false,city:'Delhi',burn:false,burnAt:null,replies:[]},
+  {id:10,to:"my body",from:"Anonymous",lang:"EN",mood:"closure",content:"I have been at war with you since I was 14. I measured you, restricted you, punished you for not being small enough. You kept showing up for me anyway. Every morning. Every exam. Every heartbreak. I'm sorry it took me so long.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:11,to:"the friend I lost to cancer",from:"Vikram",lang:"EN",mood:"grief",content:"You would have been 31 this month. I still save voice notes to send you sometimes. Then I remember. Then I keep them anyway.",felt:0,feltByMe:false,private:false,city:'Pune',burn:false,burnAt:null,replies:[]},
+  {id:12,to:"mere papa",from:"Anonymous",lang:"HI",mood:"guilt",content:"जब आपने मुझे medical छोड़कर arts लेने से मना किया था, मैंने आपसे बात करना बंद कर दिया था एक पूरे साल के लिए। आज जब मैं अपने बच्चों को देखता हूँ, समझ आता है कि डर भी एक तरह का प्यार होता है।",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+];
+
+const LOTD_LETTERS=[
+  {text:"I never once heard my mother say she was tired. Not once. She cooked, she cleaned, she attended every parent-teacher meeting, she waited up. It was only after she died that I found her diary. One entry: 'Today I just wanted five minutes alone and I felt guilty for it.' I didn't know. I should have known.",from:"— Anonymous, Pune"},
+  {text:"You were the person I called when anything happened — good or bad — before I even processed it myself. And then one day you weren't. I don't know how to have good news anymore. It just sits there.",from:"— Kavya, 27, Hyderabad"},
+  {text:"Beta, I know I don't say it enough. I don't know how to say it. But every time I make your favourite food when you come home, that's me saying it.",from:"— A father, written on behalf of all of them"},
+];
+
+const COLLECTIONS={
+  fathers:[1,12,20,21],
+  '3am':[22,23,5,8],
+  funeral:[11,24,25,10]
+};
+
+// Collection-specific seed letters
+const COLLECTION_EXTRAS=[
+  {id:20,to:"my father",from:"Anonymous",lang:"EN",mood:"grief",content:"You drove the same 28 kilometres to work for 31 years. Never complained. Never took a sick day. I don't think I ever once asked how you were doing. Not really. I assumed you were fine because you always showed up. I know now that showing up was the whole sentence.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:21,to:"papa",from:"Ananya",lang:"EN",mood:"love",content:"You didn't come to my graduation because there was an office presentation you couldn't miss. I told everyone my father was travelling. I didn't tell them I cried in the bathroom for 20 minutes. I'm not angry anymore. I just want you to know it mattered to me. That's all.",felt:0,feltByMe:false,private:false,city:'Hyderabad',burn:false,burnAt:null,replies:[]},
+  {id:22,to:"the version of me that couldn't sleep",from:"Anonymous",lang:"EN",mood:"grief",content:"It's 3am again. You're lying there replaying every conversation from the last six months looking for the exact moment it started going wrong. You won't find it. Some things don't break at a moment. They just slowly stop working. You can stop looking now.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:23,to:"whoever is awake right now",from:"Anonymous",lang:"Hinglish",mood:"longing",content:"Tum bhi neend nahi aa rahi? Main bhi. Kuch din aisa hota hai na — sab theek hota hai din mein, log baat karte hain, kaam hota hai. But 3 baje ke baad sab wapas aata hai. Akele. Bina permission ke. Hope kartan hoon ki tumhara din kal better ho.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:24,to:"my mother, at her funeral",from:"Anonymous",lang:"EN",mood:"grief",content:"Everyone kept saying how strong you were. How you never complained. I stood there nodding. What I wanted to say — what I couldn't say with all those people around — is that you were allowed to be tired. You were allowed to ask for help. I wish someone had told you that while you were still here.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
+  {id:25,to:"Dadu",from:"Rohan",lang:"EN",mood:"closure",content:"There were 47 people at your funeral. Everyone had a story. I realised I only knew half of yours. The half from before I was born. The half where you were young and scared and figuring things out — that half died with you and I will never stop being sad about that.",felt:0,feltByMe:false,private:false,city:'Kolkata',burn:false,burnAt:null,replies:[]},
+];
+
+const CITIES=['Mumbai','Delhi','Bangalore','Chennai','Kolkata','Hyderabad','Pune','Jaipur','Lucknow','Surat','Nagpur','Indore'];
+const TAGS=['All','Parent','Friend','Ex','Self','Sibling','Boss','Stranger'];
+const MOODS=['All','grief','love','rage','guilt','longing','gratitude','relief','closure'];
+
+const DEAD_SEEDS=[
+  {id:101,to:"my nana",from:"Anonymous",content:"You died before I could tell you that the garden you planted is still growing. Every summer when the champa blooms I think of you. I think you would have liked who I became. I hope you would have."},
+  {id:102,to:"Rahul bhai",from:"Priya",content:"It's been four years. I still pick up my phone to call you sometimes. Then I remember. The stupid thing is I had your number memorised and now I don't know what to do with that."},
+];
+
+
+let letters = []; // populated from Supabase on page load
+let lettersLoading = false;
+
+async function initLetters(){
+  lettersLoading = true;
+  letters = await loadLettersFromDB();
+  lettersLoading = false;
+  updateStats();
+}
+let deadLetters=JSON.parse(JSON.stringify(DEAD_SEEDS));
+let capsules=[];
+let currentFilter='All',currentMoodFilter='All',selectedLang='EN',selectedMood='';
+let featIdx=0,featTimer=null,shareLetter=null,mobileNavOpen=false,isPrivate=false,burnOn=false;
+let activeModalId=null,lastModalTrigger=null,lastModalFocusedElement=null;
+const feltCooldown=new Map();
+const actionCooldowns=new Map();
+const STORAGE_KEYS={
+  letters:'unsent_v5',
+  felt:'unsent_v5_felt',
+  privateLetters:'unsent_private',
+  audit:'unsent_audit_v1'
+};
+const LIMITS={
+  to:120,
+  from:80,
+  city:80,
+  letterContent:6000,
+  replyContent:500,
+  deadContent:6000,
+  capsuleContent:6000,
+  contact:120
+};
+
+function safeParseJSON(raw,fallback){
+  if(!raw)return fallback;
+  try{return JSON.parse(raw);}catch(e){return fallback;}
+}
+function isActionAllowed(key,cooldownMs){
+  const now=Date.now();
+  const nextAt=actionCooldowns.get(key)||0;
+  if(now<nextAt)return false;
+  actionCooldowns.set(key,now+cooldownMs);
+  return true;
+}
+function truncateText(value,maxLen){
+  return String(value||'').trim().slice(0,maxLen);
+}
+function addAuditEvent(type,payload){
+  try{
+    const events=safeParseJSON(localStorage.getItem(STORAGE_KEYS.audit),[]);
+    const nextEvent={type,ts:Date.now(),payload};
+    const merged=Array.isArray(events)?[nextEvent,...events].slice(0,200):[nextEvent];
+    localStorage.setItem(STORAGE_KEYS.audit,JSON.stringify(merged));
+  }catch(e){}
+}
+function getAuditEvents(limit){
+  const max=Math.max(1,Math.min(Number(limit)||20,200));
+  const events=safeParseJSON(localStorage.getItem(STORAGE_KEYS.audit),[]);
+  return Array.isArray(events)?events.slice(0,max):[];
+}
+
+// ── SUPABASE LETTER FUNCTIONS ─────────────────────────────────────────
+
+// feltByMe is tracked locally per browser (no accounts)
+function loadFeltLocal(){
+  return safeParseJSON(localStorage.getItem(STORAGE_KEYS.felt),{});
+}
+function saveFeltLocal(id, feltByMe){
+  const m = loadFeltLocal();
+  m[id] = feltByMe;
+  try{ localStorage.setItem(STORAGE_KEYS.felt, JSON.stringify(m)); }catch(e){}
+}
+
+async function loadLettersFromDB(){
+  try{
+    const { data, error } = await db
+      .from('letters')
+      .select('*')
+      .eq('is_visible', true)
+      .order('created_at', { ascending: false })
+      .limit(200);
+    if(error){ console.error('Supabase load error:', JSON.stringify(error), error.message, error.code, error.details, error.hint); return []; }
+    const feltMap = loadFeltLocal();
+    return (data||[]).map(row => ({
+      id: row.id,
+      to: row.to_name,
+      from: row.from_name,
+      content: row.content,
+      mood: row.mood || '',
+      lang: row.lang || 'EN',
+      city: row.city || '',
+      felt: row.felt_count || 0,
+      feltByMe: !!feltMap[row.id],
+      private: false,
+      burn: false,
+      burnAt: null,
+      replies: [],
+      date: new Date(row.created_at).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})
+    }));
+  }catch(e){ console.error('loadLettersFromDB error:', e); return []; }
+}
+
+async function saveLetterToDB(nl){
+  try{
+    const { data, error } = await db.from('letters').insert([{
+      to_name: nl.to,
+      from_name: nl.from,
+      content: nl.content,
+      mood: nl.mood || null,
+      lang: nl.lang || 'EN',
+      city: nl.city || null,
+      felt_count: 0,
+      is_visible: false
+    }]).select().single();
+    if(error){ console.error('Supabase insert error:', error); return null; }
+    return data;
+  }catch(e){ console.error('saveLetterToDB error:', e); return null; }
+}
+
+async function incrementFeltInDB(id, increment){
+  try{
+    // Use RPC to safely increment/decrement
+    const { error } = await db.rpc('increment_felt', { letter_id: id, amount: increment });
+    if(error){
+      // Fallback: manual update
+      const { data: current } = await db.from('letters').select('felt_count').eq('id', id).single();
+      if(current){
+        await db.from('letters').update({ felt_count: Math.max(0, (current.felt_count||0) + increment) }).eq('id', id);
+      }
+    }
+  }catch(e){ console.error('incrementFelt error:', e); }
+}
+
+// Legacy stubs — kept so nothing else breaks
+function loadLetters(){ return []; }
+function saveLetters(){}
+function saveFelt(){}
+function loadFelt(){}
+function loadPrivate(){try{const s=safeParseJSON(localStorage.getItem(STORAGE_KEYS.privateLetters),[]);return Array.isArray(s)?s:[];}catch(e){return [];}}
+function savePrivate(l){try{const a=loadPrivate();a.unshift(l);localStorage.setItem(STORAGE_KEYS.privateLetters,JSON.stringify(a.slice(0,500)));}catch(e){}}
+
+function toggleMobileNav(){
+  mobileNavOpen=!mobileNavOpen;
+  const hb=document.getElementById('hamburger');
+  const mn=document.getElementById('mobile-nav');
+  if(hb){
+    hb.classList.toggle('open',mobileNavOpen);
+    hb.setAttribute('aria-expanded',String(mobileNavOpen));
+  }
+  if(mn)mn.classList.toggle('open',mobileNavOpen);
+}
+
+function showPage(name){
+  // Handle admin page separately
+  const adminPage = document.getElementById('page-admin');
+  if(name === 'admin'){
+    ['home','write','letters','about','dead','capsule'].forEach(p=>{
+      document.getElementById('page-'+p).classList.add('hidden');
+      const b=document.getElementById('nav-'+p);if(b)b.classList.remove('active');
+      const mb=document.getElementById('mnav-'+p);if(mb)mb.classList.remove('active');
+    });
+    if(adminPage) adminPage.classList.remove('hidden');
+    document.getElementById('testimonials-home').classList.add('hidden');
+    document.getElementById('home-footer-text').classList.add('hidden');
+    document.getElementById('digest-bar').classList.add('hidden');
+    stopFeatured();
+    window.scrollTo(0,0);
+    return;
+  }
+  if(adminPage) adminPage.classList.add('hidden');
+  ['home','write','letters','about','dead','capsule'].forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('hidden',p!==name);
+    const b=document.getElementById('nav-'+p);if(b)b.classList.toggle('active',p===name);
+    const mb=document.getElementById('mnav-'+p);if(mb)mb.classList.toggle('active',p===name);
+  });
+  const ih=name==='home';
+  document.getElementById('testimonials-home').classList.toggle('hidden',!ih);
+  document.getElementById('home-footer-text').classList.toggle('hidden',!ih);
+  document.getElementById('digest-bar').classList.toggle('hidden',name!=='letters');
+  if(ih){startFeatured();updateStats();showLOTD();}else{stopFeatured();}
+  if(name==='letters'){
+    if(!lettersLoading){
+      // Show existing letters immediately, then refresh from DB
+      renderLetters();
+      loadLettersFromDB().then(fresh => {
+        letters = fresh;
+        renderLetters();
+        updateStats();
+      });
+    } else {
+      renderLetters();
+    }
+  }
+  if(name==='dead'){renderDead();}
+  if(name==='capsule'){renderCapsules();}
+  window.scrollTo(0,0);
+  const pg=document.getElementById('page-'+name);
+  pg.style.animation='none';pg.offsetHeight;pg.style.animation='';
+}
+
+function updateStats(){
+  const count = letters.filter(l=>!l.private).length;
+  const el = document.getElementById('home-letter-count');
+  if(el) el.textContent = count + ' letters. Every one real.';
+}
+
+function showLOTD(){
+  const lotdText=document.getElementById('lotd-text');
+  const lotdFrom=document.getElementById('lotd-from');
+  if(!lotdText||!lotdFrom) return;
+  const l=LOTD_LETTERS[new Date().getDate()%LOTD_LETTERS.length];
+  lotdText.textContent=l.text;
+  lotdFrom.textContent=l.from;
+}
+
+// Featured letters on home page — uses live DB letters once loaded, falls back to BASE_LETTERS
+function getFeaturedLetters(){
+  const pool = letters.length >= 5 ? letters : BASE_LETTERS;
+  return pool.slice(0, 5);
+}
+const FEAT=BASE_LETTERS.slice(0,5);
+function startFeatured(){stopFeatured();renderFeat();featTimer=setInterval(()=>{featIdx=(featIdx+1)%FEAT.length;renderFeat();},5000);}
+function stopFeatured(){if(featTimer){clearInterval(featTimer);featTimer=null;}}
+function renderFeat(){
+  const l=FEAT[featIdx];
+  document.getElementById('f-to').textContent='To '+l.to;
+  document.getElementById('f-content').textContent=l.content;
+  document.getElementById('f-from').textContent='— '+l.from;
+  document.getElementById('f-dots').innerHTML=FEAT.map((_,i)=>`<span class="dot${i===featIdx?' active':''}" onclick="featIdx=${i};renderFeat()"></span>`).join('');
+}
+
+function buildMarquee(){
+  const d=[...TESTIMONIALS,...TESTIMONIALS];
+  document.getElementById('marquee-track').innerHTML=d.map(t=>`
+    <div class="t-card">
+      <p class="t-quote">${escHtml(t.quote)}</p>
+      <p class="t-author"><strong>${escHtml(t.author)}</strong>${t.location?' · '+escHtml(t.location):''}</p>
+    </div>`).join('');
+}
+
+// Write page
+function setLang(l){
+  selectedLang=l;
+  ['EN','HI','HX'].forEach(id=>document.getElementById('lang-'+id).classList.toggle('active',id===(l==='Hinglish'?'HX':l)));
+}
+function setMood(m){
+  selectedMood=(selectedMood===m)?'':m;
+  document.querySelectorAll('#mood-pills .mood-pill').forEach(b=>b.classList.toggle('sel',b.textContent.trim()===selectedMood));
+}
+function toggleBurn(){burnOn=!burnOn;const el=document.getElementById('burn-toggle');el.classList.toggle('active',burnOn);document.getElementById('burn-state').textContent=burnOn?'On 🔥':'Off';}
+function togglePrivate(){
+  isPrivate=document.getElementById('private-toggle').checked;
+  document.getElementById('private-hint').classList.toggle('hidden',!isPrivate);
+  const ds=document.getElementById('delivery-section');
+  ds.style.opacity=isPrivate?'.3':'1';
+  ds.style.pointerEvents=isPrivate?'none':'';
+  const rb=document.getElementById('release-btn');if(rb)rb.disabled=!canSubmit();
+}
+function canSubmit(){return !!(document.getElementById('w-to').value.trim()&&document.getElementById('w-content').value.trim());}
+function checkForm(){
+  const ok=canSubmit();
+  const rb=document.getElementById('release-btn');if(rb)rb.disabled=!ok;
+}
+function updateCounter(){
+  const v=document.getElementById('w-content').value;
+  const w=v.trim()?v.trim().split(/\s+/).length:0;
+  const el=document.getElementById('char-counter');
+  el.textContent=`${w} word${w!==1?'s':''} · ${v.length} characters`;
+  el.classList.toggle('warn',v.length>1500);
+}
+function openPhysicalModal(){
+  const c=document.getElementById('w-content').value.trim();
+  const to=document.getElementById('w-to').value.trim();
+  if(!c)return;
+  document.getElementById('card-preview-text').textContent=(to?'To '+to+',\n\n':'')+c.substring(0,400)+(c.length>400?'…':'');
+  openModal('physical-modal');
+}
+function releaseLetter(anon){
+  if(!isActionAllowed('release-letter',700)){showToast('Please wait a moment before submitting again.');return;}
+  const to=truncateText(document.getElementById('w-to').value,LIMITS.to);
+  const from=truncateText(document.getElementById('w-from').value,LIMITS.from)||'Anonymous';
+  const content=truncateText(document.getElementById('w-content').value,LIMITS.letterContent);
+  const target=truncateText(document.getElementById('w-target')?.value||'',LIMITS.contact);
+  if(!to||!content)return;
+  if(!isPrivate&&anon&&target){document.getElementById('modal-target').textContent=target;openModal('anon-modal');return;}
+  submitLetter(to,from,content,anon,isPrivate);
+}
+async function submitLetter(to,from,content,anon,priv){
+  const nl={id:Date.now(),to,from,lang:selectedLang,mood:selectedMood||'',content,felt:0,feltByMe:false,private:priv||false,
+    city:truncateText(document.getElementById('w-city')?.value,LIMITS.city)||'',
+    burn:burnOn,burnAt:burnOn?Date.now()+24*60*60*1000:null,
+    replies:[],
+    date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})};
+  addAuditEvent('letter_submitted',{id:nl.id,private:nl.private,burn:nl.burn,lang:nl.lang,mood:nl.mood||null});
+  if(priv){
+    savePrivate(nl);
+  } else {
+    const saved = await saveLetterToDB(nl);
+    if(saved){ nl.id = saved.id; }
+    letters.unshift(nl);
+  }
+  document.getElementById('write-form').classList.add('hidden');
+  document.getElementById('write-success').classList.remove('hidden');
+  const pu=document.getElementById('private-upsell');
+  if(priv&&pu)pu.classList.remove('hidden');
+  document.getElementById('success-msg').textContent=priv?'Saved.':anon?'Sent.':'Released.';
+  document.getElementById('success-sub').textContent=priv?'Kept safe. Just for you — in your archive.'
+    :anon?"Your letter is on its way. They'll never know it was you."
+    :'Your words are out in the world now.';
+  setTimeout(()=>{
+    document.getElementById('write-form').classList.remove('hidden');
+    document.getElementById('write-success').classList.add('hidden');
+    const puEl=document.getElementById('private-upsell');if(puEl)puEl.classList.add('hidden');
+    ['w-to','w-from','w-content','w-target'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    const cityEl=document.getElementById('w-city');if(cityEl)cityEl.value='';
+    burnOn=false;const bt=document.getElementById('burn-toggle');if(bt){bt.classList.remove('active');document.getElementById('burn-state').textContent='Off';}
+    selectedMood='';isPrivate=false;
+    document.getElementById('private-toggle').checked=false;
+    document.getElementById('private-hint').classList.add('hidden');
+    document.getElementById('delivery-section').style.opacity='';
+    document.getElementById('delivery-section').style.pointerEvents='';
+    document.querySelectorAll('#mood-pills .mood-pill').forEach(b=>b.classList.remove('sel'));
+    setLang('EN');checkForm();updateCounter();
+    if(!priv)showPage('letters');
+  },3200);
+}
+function fakePayment(){closeModal('anon-modal');const to=document.getElementById('w-to').value.trim(),from=document.getElementById('w-from').value.trim()||'Anonymous',content=document.getElementById('w-content').value.trim();submitLetter(to,from,content,true,false);}
+function fakeCardPayment(){closeModal('physical-modal');showToast('Card queued for printing · Delivery in 5–7 days');setTimeout(()=>{const to=document.getElementById('w-to').value.trim(),from=document.getElementById('w-from').value.trim()||'Anonymous',content=document.getElementById('w-content').value.trim();submitLetter(to,from,content,false,false);},500);}
+
+// Tabs
+function switchTab(tab){
+  ['feed','collections','archive'].forEach(t=>{
+    document.getElementById('ltab-'+t).classList.toggle('hidden',t!==tab);
+    document.getElementById('tab-'+t).classList.toggle('active',t===tab);
+  });
+  if(tab==='collections')renderCollections();
+  if(tab==='archive')renderArchive();
+  if(tab==='feed')renderLetters();
+}
+
+function renderCollections(){
+  const allSrc=[...letters,...COLLECTION_EXTRAS];
+  Object.entries(COLLECTIONS).forEach(([key,ids])=>{
+    const el=document.getElementById('cl-'+key);if(!el)return;
+    const cl=ids.map(id=>allSrc.find(l=>l.id===id)).filter(Boolean);
+    el.innerHTML='<div style="margin-top:1.25rem;border-top:1px solid var(--border);padding-top:1.25rem;">'
+      +cl.map(l=>`<div style="padding:.85rem 0 .85rem 1rem;border-left:1px solid var(--border2);margin-bottom:.75rem;">
+        <p style="font-size:.62rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;">To <em style="text-transform:none;letter-spacing:0;color:var(--text);font-size:.8rem;">${escHtml(l.to)}</em></p>
+        <p style="font-size:.97rem;line-height:1.85;font-style:italic;color:var(--text);margin-bottom:.4rem;">${escHtml(l.content)}</p>
+        <p style="font-size:.78rem;color:var(--dim);">— ${escHtml(l.from)}</p>
+      </div>`).join('')+'</div>';
+  });
+}
+
+function toggleCol(key){
+  const el=document.getElementById('cl-'+key),tog=document.getElementById('ct-'+key);
+  const open=el.classList.toggle('open');
+  tog.textContent=open?'Close ↑':'Read collection ↓';
+}
+
+function renderArchive(){
+  const pl=loadPrivate();
+  const feed=document.getElementById('archive-feed'),empty=document.getElementById('archive-empty');
+  if(!pl.length){feed.innerHTML='';empty.classList.remove('hidden');return;}
+  empty.classList.add('hidden');
+  feed.innerHTML=pl.map(l=>`
+    <div class="archive-letter">
+      <div class="archive-meta">
+        <span class="archive-to">To <em style="font-style:italic;color:var(--text);text-transform:none;letter-spacing:0;font-size:.82rem;">${escHtml(l.to)}</em></span>
+        <span class="archive-date">${l.date||''}</span>
+      </div>
+      <p class="archive-body">${escHtml(l.content)}</p>
+      <div class="archive-actions">
+        <button class="archive-btn" onclick="deletePrivateLetter(${l.id})">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function deletePrivateLetter(id){
+  try{
+    const remaining=loadPrivate().filter(l=>l.id!==id);
+    localStorage.setItem(STORAGE_KEYS.privateLetters,JSON.stringify(remaining));
+    addAuditEvent('private_letter_deleted',{id});
+    renderArchive();
+    showToast('Letter deleted.');
+  }catch(e){showToast('Could not delete. Try again.');}
+}
+
+// Letters feed
+function readingTime(t){if(!t||!t.trim())return '';const w=t.trim().split(/\s+/).length;const m=Math.ceil(w/200);return m<=1?'1 min read':`${m} min read`;}
+function filterLetters(){
+  let list=letters.filter(l=>!l.private&&(!l.burn||!l.burnAt||Date.now()<l.burnAt));
+  const city=document.getElementById('city-filter')?.value||'all';
+  if(city!=='all')list=list.filter(l=>l.city&&l.city.toLowerCase()===city.toLowerCase());
+  const q=document.getElementById('search-input')?.value.toLowerCase().trim();
+  const clrBtn=document.getElementById('search-clear');
+  if(q){
+    list=list.filter(l=>l.to.toLowerCase().includes(q)||l.content.toLowerCase().includes(q)||l.from.toLowerCase().includes(q)||(l.mood&&l.mood.includes(q)));
+    if(clrBtn)clrBtn.style.display='block';
+  }else{
+    if(clrBtn)clrBtn.style.display='none';
+  }
+  if(currentFilter!=='All'){
+    const f=currentFilter.toLowerCase();
+    list=list.filter(l=>{const to=l.to.toLowerCase();
+      if(f==='parent')return to.includes('maa')||to.includes('father')||to.includes('mother')||to.includes('papa')||to.includes('amma')||to.includes('baba');
+      if(f==='ex')return to.includes('ex')||to.includes('girlfriend')||to.includes('boyfriend');
+      if(f==='self')return to.includes('self')||to.includes('aap')||to.includes('mere')||to.includes('younger')||to.includes('body');
+      if(f==='sibling')return to.includes('sister')||to.includes('brother')||to.includes('bhai')||to.includes('didi');
+      if(f==='boss')return to.includes('boss')||to.includes('manager');
+      if(f==='stranger')return to.includes('stranger')||to.includes('boy from')||to.includes('girl from');
+      if(f==='friend')return to.includes('friend')||to.includes('yaar');
+      return to.includes(f);
+    });
+  }
+  if(currentMoodFilter!=='All')list=list.filter(l=>l.mood===currentMoodFilter);
+  return list;
+}
+
+const PAGE_SIZE = 10;
+let currentPage = 1;
+
+function renderLetters(resetPage){
+  if(resetPage) currentPage = 1;
+  document.getElementById('mood-filter-pills').innerHTML=MOODS.map(m=>`<button class="mood-pill${m===currentMoodFilter?' sel':''}" onclick="setMoodFilter('${m}')">${m}</button>`).join('');
+  const feed=document.getElementById('letters-feed');
+  if(lettersLoading){
+    feed.innerHTML='<div style="text-align:center;padding:4rem 0;color:var(--muted);font-style:italic;font-size:.95rem;">Loading letters…</div>';
+    return;
+  }
+  document.getElementById('letter-count').textContent=letters.filter(l=>!l.private).length+' letters. Every one unsent.';
+  const fl=filterLetters();
+  if(!fl.length){feed.innerHTML='';document.getElementById('no-letters').classList.remove('hidden');return;}
+  document.getElementById('no-letters').classList.add('hidden');
+  const paged = fl.slice(0, currentPage * PAGE_SIZE);
+  const hasMore = fl.length > paged.length;
+  feed.innerHTML=paged.map((l,i)=>`
+    <div class="letter-card slide-in" style="animation-delay:${i*.04}s">
+      <div class="letter-meta">
+        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+          <p class="letter-to">To <em>${escHtml(l.to)}</em></p>
+          ${l.burn?'<span style="font-size:.6rem;color:var(--accent);border:1px solid var(--alow);padding:.1rem .4rem;letter-spacing:.06em;">BURNS IN 24H 🔥</span>':''}
+          ${l.city?`<span style="font-size:.62rem;color:var(--dim);letter-spacing:.06em;">📍 ${escHtml(l.city)}</span>`:''}
+        </div>
+        <div class="letter-badges">${l.mood?`<span class="mood-badge">${escHtml(l.mood)}</span>`:''}<span class="lang-badge">${escHtml(l.lang)}</span></div>
+      </div>
+      <p class="letter-body">${escHtml(l.content)}</p>
+      <div class="letter-footer">
+        <div><span class="letter-from">\u2014 ${escHtml(l.from)}</span><span class="read-time" style="margin-left:.75rem;">${readingTime(l.content)}</span></div>
+        <div class="letter-actions">
+          <button class="reply-toggle" onclick="toggleReplies(${l.id})">↩ Reply${l.replies&&l.replies.length>0?' ('+l.replies.length+')':''}</button>
+          <button class="share-btn" onclick="openShare(${l.id})">Share</button>
+          <button class="felt-btn${l.feltByMe?' active':''}" id="felt-${l.id}" onclick="toggleFelt(${l.id},this)">
+            ${l.feltByMe?'♥':'♡'} I felt this &middot; ${l.felt.toLocaleString('en-IN')}
+          </button>
+        </div>
+      </div>
+      <div id="replies-${l.id}" class="reply-thread hidden">
+        ${(l.replies||[]).map(r=>`<div class="reply-item"><p class="reply-text">${escHtml(r.text)}</p><p class="reply-from">\u2014 ${escHtml(r.from)}</p></div>`).join('')}
+        <div class="reply-input-wrap">
+          <input id="reply-inp-${l.id}" type="text" placeholder="Write anonymously…" onkeydown="if(event.key==='Enter')submitReply(${l.id})"/>
+          <button class="reply-btn" onclick="submitReply(${l.id})">Send</button>
+        </div>
+      </div>
+    </div>`).join('') + (hasMore ? `
+    <div style="text-align:center;padding:2rem 0;">
+      <button class="btn-ghost" onclick="loadMoreLetters()" style="letter-spacing:.12em;font-size:.85rem;">Load more letters</button>
+      <p style="font-size:.72rem;color:var(--dim);margin-top:.75rem;">Showing ${paged.length} of ${fl.length}</p>
+    </div>` : `<p style="text-align:center;padding:2rem 0;font-size:.75rem;color:var(--dim);letter-spacing:.08em;">— all letters loaded —</p>`);
+}
+
+function loadMoreLetters(){
+  currentPage++;
+  renderLetters();
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function setFilter(t){currentFilter=t;renderLetters(true);}
+function setMoodFilter(m){currentMoodFilter=m;renderLetters(true);}
+function clearSearch(){
+  const inp=document.getElementById('search-input');
+  const clr=document.getElementById('search-clear');
+  if(inp)inp.value='';
+  if(clr)clr.style.display='none';
+  renderLetters(true);
+}
+
+// V5: Felt with burst + milestone
+function toggleFelt(id,btn){
+  const l=letters.find(x=>x.id===id);if(!l)return;
+  const now=Date.now();
+  if((feltCooldown.get(id)||0)>now)return;
+  feltCooldown.set(id,now+350);
+  l.feltByMe=!l.feltByMe;
+  l.felt+=l.feltByMe?1:-1;
+  // Save felt state locally and update DB
+  saveFeltLocal(id, l.feltByMe);
+  incrementFeltInDB(id, l.feltByMe ? 1 : -1);
+  if(btn){
+    btn.classList.remove('burst');void btn.offsetWidth;btn.classList.add('burst');
+    btn.innerHTML=`${l.feltByMe?'♥':'♡'} I felt this &middot; ${l.felt.toLocaleString('en-IN')}`;
+    btn.classList.toggle('active',l.feltByMe);
+    setTimeout(()=>btn.classList.remove('burst'),400);
+  }
+  if(l.feltByMe){
+    showToast('You felt this.');
+    if(l.felt>0&&l.felt%10===0){showMilestone(l.felt);}
+  }
+}
+
+function showMilestone(count){
+  document.querySelectorAll('.felt-milestone').forEach(e=>e.remove());
+  const el=document.createElement('div');
+  el.className='felt-milestone';
+  el.innerHTML=`<strong>${count.toLocaleString('en-IN')} strangers</strong> felt your words.`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),4800);
+}
+
+// ── SHARE & IMAGE CARD GENERATOR ─────────────────────────────────────────
+
+let currentCardFormat = 'story'; // story | square | wide
+
+const CARD_FORMATS = {
+  story:  { w: 1080, h: 1920, label: 'story'  },
+  square: { w: 1080, h: 1080, label: 'square' },
+  wide:   { w: 1920, h: 1080, label: 'wide'   },
+};
+
+function openShare(id){
+  const l=letters.find(x=>x.id===id);
+  if(!l)return;
+  shareLetter=l;
+  openModal('share-modal');
+  renderCard();
+}
+
+function setCardFormat(fmt){
+  currentCardFormat = fmt;
+  document.querySelectorAll('.card-fmt-btn').forEach(b=>b.classList.remove('active'));
+  const btn = document.getElementById('fmt-'+fmt);
+  if(btn) btn.classList.add('active');
+  renderCard();
+}
+
+function renderCard(){
+  if(!shareLetter) return;
+  const fmt = CARD_FORMATS[currentCardFormat];
+  const canvas = document.getElementById('share-canvas');
+  const loading = document.getElementById('canvas-loading');
+  if(!canvas) return;
+
+  canvas.width  = fmt.w;
+  canvas.height = fmt.h;
+  const ctx = canvas.getContext('2d');
+
+  // Safari-safe letter spacing — manual character placement
+  function fillSpacedText(text, x, y, spacing){
+    let cx = x;
+    for(const ch of text){
+      ctx.fillText(ch, cx, y);
+      cx += ctx.measureText(ch).width + spacing;
+    }
+  }
+
+  // Background
+  ctx.fillStyle = '#0b0906';
+  ctx.fillRect(0, 0, fmt.w, fmt.h);
+
+  // Vignette
+  const vig = ctx.createRadialGradient(fmt.w/2, fmt.h/2, fmt.h*0.25, fmt.w/2, fmt.h/2, fmt.h*0.85);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.55)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, fmt.w, fmt.h);
+
+  // Left accent line
+  const pad = fmt.w * 0.1;
+  const lineH = fmt.h * 0.48;
+  const lineY = (fmt.h - lineH) / 2;
+  ctx.strokeStyle = '#5a2516';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(pad, lineY);
+  ctx.lineTo(pad, lineY + lineH);
+  ctx.stroke();
+
+  // TO label
+  const contentX = pad + fmt.w * 0.045;
+  let curY = lineY + fmt.h * 0.035;
+  ctx.fillStyle = '#4a3a2f';
+  ctx.font = `${fmt.w * 0.022}px Georgia, serif`;
+  const toLabel = ('TO ' + shareLetter.to.toUpperCase()).slice(0, 40);
+  fillSpacedText(toLabel, contentX, curY, fmt.w * 0.006);
+
+  curY += fmt.h * 0.055;
+
+  // Letter content
+  const maxWidth  = fmt.w - pad * 2 - fmt.w * 0.045;
+  const fontSize  = fmt.w * 0.038;
+  const lineHeight = fontSize * 1.75;
+
+  // Opening quote
+  ctx.fillStyle = '#c85c3e';
+  ctx.font = `italic ${fontSize * 1.4}px Georgia, serif`;
+  ctx.fillText('\u201c', contentX - fmt.w * 0.005, curY);
+
+  ctx.fillStyle = '#f0e2cc';
+  ctx.font = `italic ${fontSize}px Georgia, serif`;
+
+  // Word wrap
+  const maxLines = currentCardFormat === 'story' ? 11 : currentCardFormat === 'square' ? 7 : 5;
+  const words = shareLetter.content.split(' ');
+  const lines = [];
+  let current = '';
+  for(const word of words){
+    const test = current ? current + ' ' + word : word;
+    if(ctx.measureText(test).width > maxWidth && current){
+      lines.push(current);
+      current = word;
+      if(lines.length >= maxLines){ lines.push(current + '\u2026'); current = null; break; }
+    } else { current = test; }
+  }
+  if(current !== null) lines.push(current);
+
+  for(const line of lines){
+    ctx.fillText(line, contentX, curY);
+    curY += lineHeight;
+  }
+
+  // Closing quote
+  ctx.fillStyle = '#c85c3e';
+  ctx.font = `italic ${fontSize * 1.4}px Georgia, serif`;
+  ctx.fillText('\u201d', contentX, curY);
+  curY += lineHeight * 1.2;
+
+  // From
+  ctx.fillStyle = '#4a3a2f';
+  ctx.font = `${fmt.w * 0.026}px Georgia, serif`;
+  ctx.fillText('\u2014 ' + shareLetter.from, contentX, curY);
+
+  // Branding
+  const brandY = fmt.h - fmt.h * 0.06;
+  ctx.strokeStyle = '#1e1912';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(pad, brandY - fmt.h * 0.025);
+  ctx.lineTo(fmt.w - pad, brandY - fmt.h * 0.025);
+  ctx.stroke();
+
+  ctx.fillStyle = '#2a1a0f';
+  ctx.font = `${fmt.w * 0.02}px Georgia, serif`;
+  fillSpacedText('UNSENT.CLOUD', contentX, brandY, fmt.w * 0.004);
+
+  if(loading) loading.style.display = 'none';
+}
+
+function downloadCard(){
+  if(!shareLetter) return;
+  const canvas = document.getElementById('share-canvas');
+  if(!canvas) return;
+  const link = document.createElement('a');
+  const fmt = currentCardFormat;
+  const toSlug = shareLetter.to.replace(/\s+/g,'-').slice(0,20).toLowerCase();
+  link.download = `unsent-${toSlug}-${fmt}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showToast('Image downloaded ✓');
+}
+
+function getShareText(){
+  if(!shareLetter) return '';
+  return `To ${shareLetter.to}\n\n\u201c${shareLetter.content}\u201d\n\n\u2014 ${shareLetter.from}\n\nunsent.cloud`;
+}
+function copyLetter(){
+  if(!shareLetter) return;
+  navigator.clipboard.writeText(getShareText()).then(()=>{
+    const el=document.getElementById('copy-ok');
+    if(el){el.style.display='block';setTimeout(()=>el.style.display='none',2500);}
+  });
+}
+function shareViaWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(getShareText()),'_blank');}
+function shareViaInstagram(){navigator.clipboard.writeText(getShareText()).then(()=>{showToast('Copied. Open Instagram Stories and paste.');});}
+function shareViaTwitter(){
+  const p=shareLetter.content.length>200?shareLetter.content.substring(0,200)+'\u2026':shareLetter.content;
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(`"${p}"\n\n\u2014 unsent.cloud`),'_blank');
+}
+
+function openModal(id){
+  const modal=document.getElementById(id);if(!modal)return;
+  lastModalTrigger=document.activeElement instanceof HTMLElement?document.activeElement:null;
+  modal.classList.remove('hidden');
+  modal.setAttribute('aria-hidden','false');
+  activeModalId=id;
+  const focusable=modal.querySelector('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+  lastModalFocusedElement=focusable instanceof HTMLElement?focusable:null;
+  if(lastModalFocusedElement&&lastModalFocusedElement.focus)lastModalFocusedElement.focus();
+}
+function closeModal(id){
+  const modal=document.getElementById(id);if(!modal)return;
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden','true');
+  if(activeModalId===id)activeModalId=null;
+  lastModalFocusedElement=null;
+  if(lastModalTrigger&&lastModalTrigger.focus)lastModalTrigger.focus();
+}
+let toastTimer;
+function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2500);}
+
+window.addEventListener('scroll',()=>{
+  const pct=document.body.scrollHeight-window.innerHeight>0?(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100:0;
+  document.getElementById('progress-bar').style.width=pct+'%';
+});
+
+['anon-modal','share-modal','physical-modal','private-tier-modal','waitlist-modal'].forEach(id=>{
+  const modal=document.getElementById(id);
+  if(!modal)return;
+  modal.setAttribute('aria-hidden','true');
+  const dialog=modal.querySelector('.modal');
+  if(dialog){dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');}
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal(id);});
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&activeModalId)closeModal(activeModalId);
+  if(e.key==='Tab'&&activeModalId){
+    const modal=document.getElementById(activeModalId);
+    if(!modal)return;
+    const focusable=Array.from(modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.hasAttribute('disabled'));
+    if(!focusable.length)return;
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();return;}
+    if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
+
+// Reply threads
+function toggleReplies(id){const el=document.getElementById('replies-'+id);if(el)el.classList.toggle('hidden');}
+function submitReply(id){
+  if(!isActionAllowed('reply-'+id,800)){showToast('Please slow down a bit.');return;}
+  const inp=document.getElementById('reply-inp-'+id);const text=inp?truncateText(inp.value,LIMITS.replyContent):'';if(!text)return;
+  const l=letters.find(x=>x.id===id);if(!l)return;
+  if(!l.replies)l.replies=[];
+  l.replies.push({text,from:'Anonymous',ts:Date.now()});
+  if(l.replies.length>100)l.replies=l.replies.slice(-100);
+  addAuditEvent('reply_submitted',{letterId:id,replies:l.replies.length});
+  inp.value='';renderLetters();
+}
+
+// Dead letters
+function checkDead(){const ok=document.getElementById('d-to').value.trim()&&document.getElementById('d-content').value.trim();document.getElementById('d-submit').disabled=!ok;}
+function submitDead(){
+  if(!isActionAllowed('dead-submit',900)){showToast('Please wait a moment before submitting again.');return;}
+  const to=truncateText(document.getElementById('d-to').value,LIMITS.to);
+  const from=truncateText(document.getElementById('d-from').value,LIMITS.from)||'Anonymous';
+  const content=truncateText(document.getElementById('d-content').value,LIMITS.deadContent);
+  if(!to||!content)return;
+  deadLetters.unshift({id:Date.now(),to,from,content});
+  deadLetters=deadLetters.slice(0,300);
+  addAuditEvent('dead_letter_submitted',{toLen:to.length,contentLen:content.length});
+  document.getElementById('dead-form').classList.add('hidden');
+  document.getElementById('dead-success').classList.remove('hidden');
+  setTimeout(()=>{
+    document.getElementById('dead-form').classList.remove('hidden');
+    document.getElementById('dead-success').classList.add('hidden');
+    document.getElementById('d-to').value='';document.getElementById('d-from').value='';document.getElementById('d-content').value='';
+    checkDead();renderDead();
+  },3000);
+}
+function renderDead(){
+  const feed=document.getElementById('dead-feed'),empty=document.getElementById('dead-empty');
+  if(!deadLetters.length){feed.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  feed.innerHTML=deadLetters.map(l=>`
+    <div class="dead-card">
+      <p class="dead-to">To ${escHtml(l.to)}</p>
+      <p class="dead-body">${escHtml(l.content)}</p>
+      <p class="dead-from">\u2014 ${escHtml(l.from)}</p>
+    </div>`).join('');
+}
+
+// Capsule
+function selectDelay(btn,val){
+  document.querySelectorAll('.delay-opt').forEach(b=>{b.style.borderColor='var(--border)';b.style.color='var(--muted)';b.style.background='transparent';});
+  btn.style.borderColor='var(--accent)';btn.style.color='var(--text)';btn.style.background='var(--alow)';
+  document.getElementById('c-delay').value=val;
+  checkCapsule();
+}
+function checkCapsule(){const ok=document.getElementById('c-content').value.trim()&&document.getElementById('c-contact').value.trim()&&document.getElementById('c-delay').value;const btn=document.getElementById('c-submit');if(btn){btn.disabled=!ok;btn.style.opacity=ok?'1':'.3';btn.style.cursor=ok?'pointer':'not-allowed';}}
+async function submitCapsule(){
+  if(!isActionAllowed('capsule-submit',900)){showToast('Please wait a moment before submitting again.');return;}
+  const content=truncateText(document.getElementById('c-content').value,LIMITS.capsuleContent);
+  const contact=truncateText(document.getElementById('c-contact').value,LIMITS.contact);
+  const delay=parseInt(document.getElementById('c-delay').value);
+  const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern=/^\+?\d{10,14}$/;
+  if(!content||!contact||!delay)return;
+  if(!(emailPattern.test(contact)||phonePattern.test(contact.replace(/\s+/g,'')))){showToast('Enter a valid email or phone number.');return;}
+  const d=new Date();d.setMonth(d.getMonth()+delay);
+  const dateStr=d.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const{error}=await db.from('capsules').insert([{content,contact,deliver_at:d.toISOString()}]);
+  if(error){showToast('Could not seal capsule. Please try again.');return;}
+  capsules.unshift({id:Date.now(),to:'my future self',content,contact,months:delay,deliverOn:dateStr,sealed:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
+  capsules=capsules.slice(0,200);
+  addAuditEvent('capsule_submitted',{months:delay,contactKind:contact.includes('@')?'email':'phone'});
+  document.getElementById('capsule-form-wrap').classList.add('hidden');
+  document.getElementById('capsule-success').classList.remove('hidden');
+  document.getElementById('capsule-success-msg').textContent=`Sealed. We'll reach out to ${contact} to confirm your delivery before ${dateStr}.`;
+  setTimeout(()=>{
+    document.getElementById('capsule-form-wrap').classList.remove('hidden');
+    document.getElementById('capsule-success').classList.add('hidden');
+    document.getElementById('c-content').value='';document.getElementById('c-contact').value='';document.getElementById('c-delay').value='';
+    checkCapsule();renderCapsules();
+  },3500);
+}
+function renderCapsules(){
+  const list=document.getElementById('capsule-list'),empty=document.getElementById('capsule-empty');
+  if(!capsules.length){list.innerHTML='';empty.classList.remove('hidden');return;}
+  empty.classList.add('hidden');
+  list.innerHTML=capsules.map(c=>`
+    <div class="timeline-item">
+      <p class="timeline-date">Opens ${c.deliverOn}</p>
+      <p class="timeline-to">To ${escHtml(c.to)} · Sealed ${c.sealed}</p>
+      <p class="timeline-preview">${escHtml(c.content.substring(0,100))}${c.content.length>100?'…':''}</p>
+    </div>`).join('');
+}
+
+// Digest
+async function subscribeDigest(){
+  if(!isActionAllowed('digest-submit',800)){showToast('Please wait a moment.');return;}
+  const email=document.getElementById('digest-email').value.trim();
+  const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailPattern.test(email)){showToast('Enter a valid email address.');return;}
+  const{error}=await db.from('digest_subscribers').insert([{email}]);
+  if(error&&error.code==='23505'){showToast('You are already subscribed.');return;}
+  if(error){showToast('Something went wrong. Please try again.');return;}
+  document.getElementById('digest-email').value='';
+  const ok=document.getElementById('digest-ok');ok.style.display='block';
+  addAuditEvent('digest_subscribed',{domain:email.split('@')[1]||''});
+  setTimeout(()=>ok.style.display='none',4000);
+}
+
+// Typewriter
+const TW_LINES=[
+  {text:'Some words were never ',style:'color:var(--text)'},
+  {text:'meant to be sent.',style:'color:var(--text);font-style:italic'},
+  {text:'Say them anyway.',style:'color:var(--muted)'},
+];
+function runTypewriter(){
+  const out=document.getElementById('tw-out'),cursor=document.getElementById('tw-cursor'),tagline=document.getElementById('home-tagline');
+  if(!out)return;
+  setTimeout(()=>{if(tagline)tagline.style.opacity='1';},400);
+  let lineIdx=0,charIdx=0,html='';
+  function typeNext(){
+    if(lineIdx>=TW_LINES.length){setTimeout(()=>{if(cursor)cursor.style.display='none';},2000);return;}
+    const line=TW_LINES[lineIdx];
+    if(charIdx<line.text.length){
+      if(charIdx===0)html+=`<span style="${line.style}">`;
+      html+=line.text[charIdx]==='<'?'&lt;':line.text[charIdx];charIdx++;
+      if(charIdx===line.text.length){html+='</span>';if(lineIdx<TW_LINES.length-1)html+='<br>';}
+      out.innerHTML=html;
+      setTimeout(typeNext,line.text[charIdx-1]===' '?60:55+Math.random()*45);
+    }else{lineIdx++;charIdx=0;setTimeout(typeNext,420);}
+  }
+  setTimeout(typeNext,900);
+}
+
+// Waitlist
+let waitlistFeature='';
+function joinWaitlist(feature){
+  waitlistFeature=feature;
+  const titles={
+    'anonymous-send':'Send it anonymously — waitlist',
+    'physical-card':'Physical card — waitlist'
+  };
+  const descs={
+    'anonymous-send':'We\'re building anonymous delivery. Leave your contact — you\'ll be the first to send when it\'s live.',
+    'physical-card':'Handwritten cards, mailed across the world. Leave your contact — you\'ll be first in line.'
+  };
+  document.getElementById('waitlist-title').textContent=titles[feature]||'Join the waitlist';
+  document.getElementById('waitlist-desc').textContent=descs[feature]||'Be the first to know when this goes live.';
+  document.getElementById('waitlist-contact').value='';
+  document.getElementById('waitlist-ok').classList.add('hidden');
+  openModal('waitlist-modal');
+}
+async function submitWaitlist(){
+  if(!isActionAllowed('waitlist-submit',900)){showToast('Please wait a moment.');return;}
+  const v=truncateText(document.getElementById('waitlist-contact').value,LIMITS.contact);
+  if(!v)return;
+  const contactKind=v.includes('@')?'email':'phone';
+  const{error}=await db.from('waitlist').insert([{contact:v,feature:waitlistFeature||'unknown',contact_kind:contactKind}]);
+  if(error){showToast('Could not connect. Please try again.');return;}
+  document.getElementById('waitlist-contact').value='';
+  document.getElementById('waitlist-ok').classList.remove('hidden');
+  addAuditEvent('waitlist_joined',{feature:waitlistFeature||'unknown',contactKind});
+  setTimeout(()=>closeModal('waitlist-modal'),2200);
+  showToast('You\'re on the list ✓');
+}
+
+window.__unsentDebug={
+  audit(limit=20){
+    const rows=getAuditEvents(limit).map(e=>({
+      time:new Date(e.ts).toLocaleString('en-IN'),
+      type:e.type,
+      payload:e.payload
+    }));
+    console.table(rows);
+    return rows;
+  },
+  clearAudit(){
+    localStorage.removeItem(STORAGE_KEYS.audit);
+    console.info('Audit log cleared.');
+  },
+  downloadHtml(filename='unsent-india.html'){
+    try{
+      const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+      const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;
+      a.download=filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      console.info('Downloaded:',filename);
+    }catch(e){
+      console.error('Download failed',e);
+    }
+  }
+};
+
+
+// ── ADMIN ─────────────────────────────────────────────────────────────────
+const EDGE_URL = 'https://cmuilpkrbwtbdwuxocdf.supabase.co/functions/v1/admin-update';
+const EDGE_HEADERS = {
+  'Content-Type': 'application/json'
+};
+let adminPassword = '';
+let adminFilter = 'all';
+let adminLetters = [];
+let adminUnlocked = false;
+
+function checkAdminPw(){
+  const pw = document.getElementById('admin-pw-input').value.trim();
+  if(!pw) return;
+  const btn = document.querySelector('#admin-lock button');
+  if(btn) btn.disabled = true;
+  fetch(EDGE_URL, {
+    method: 'POST',
+    headers: EDGE_HEADERS,
+    body: JSON.stringify({ password: pw, action: 'getAllLetters' })
+  })
+  .then(r => r.json())
+  .then(result => {
+    if(btn) btn.disabled = false;
+    if(result.error === 'Unauthorized' || !result.success){
+      adminPassword = '';
+      document.getElementById('admin-pw-error').classList.remove('hidden');
+      document.getElementById('admin-pw-input').value = '';
+    } else {
+      adminPassword = pw;
+      adminUnlocked = true;
+      adminLetters = result.data || [];
+      document.getElementById('admin-letter-count').textContent = adminLetters.length + ' total letters';
+      document.getElementById('admin-lock').classList.add('hidden');
+      document.getElementById('admin-panel').classList.remove('hidden');
+      document.getElementById('admin-loading').classList.add('hidden');
+      renderAdminFeed();
+    }
+  })
+  .catch(() => {
+    if(btn) btn.disabled = false;
+    showToast('Could not connect to admin server.');
+  });
+}
+
+function adminLogout(){
+  adminUnlocked = false;
+  adminPassword = '';
+  adminLetters = [];
+  document.getElementById('admin-lock').classList.remove('hidden');
+  document.getElementById('admin-panel').classList.add('hidden');
+  document.getElementById('admin-pw-input').value = '';
+  document.getElementById('admin-pw-error').classList.add('hidden');
+  showPage('home');
+}
+
+async function loadAdminLetters(){
+  if(!adminUnlocked) return;
+  document.getElementById('admin-loading').classList.remove('hidden');
+  document.getElementById('admin-feed').innerHTML = '';
+  try{
+    const res = await fetch(EDGE_URL, {
+      method: 'POST',
+      headers: EDGE_HEADERS,
+      body: JSON.stringify({ password: adminPassword, action: 'getAllLetters' })
+    });
+    const result = await res.json();
+    if(!result.success){ showToast('Error loading letters.'); return; }
+    adminLetters = result.data || [];
+    document.getElementById('admin-letter-count').textContent = adminLetters.length + ' total letters';
+  }catch(e){ showToast('Could not connect to admin server.'); }
+  document.getElementById('admin-loading').classList.add('hidden');
+  renderAdminFeed();
+}
+
+function setAdminFilter(f){
+  adminFilter = f;
+  document.querySelectorAll('.admin-filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('afilter-' + f).classList.add('active');
+  renderAdminFeed();
+}
+
+function renderAdminFeed(){
+  const feed = document.getElementById('admin-feed');
+  let list = adminLetters;
+  if(adminFilter === 'pending') list = list.filter(l => !l.is_visible);
+  if(adminFilter === 'visible') list = list.filter(l => l.is_visible);
+  if(adminFilter === 'hidden') list = list.filter(l => !l.is_visible);
+  if(!list.length){
+    feed.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--muted);font-style:italic;">No letters here.</p>';
+    return;
+  }
+  feed.innerHTML = list.map(l => `
+    <div class="admin-letter-row${l.is_visible ? '' : ' is-hidden'}" id="admin-row-${l.id}">
+      <div class="admin-meta">
+        <span class="admin-to">To <em>${escHtml(l.to_name)}</em></span>
+        <span class="admin-status ${l.is_visible ? 'visible' : 'hidden-status'}">${l.is_visible ? 'visible' : 'hidden'}</span>
+        <span class="admin-felt">♥ ${l.felt_count || 0}</span>
+        <span class="admin-date">${new Date(l.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
+        ${l.city ? `<span class="admin-date">📍 ${escHtml(l.city)}</span>` : ''}
+        ${l.mood ? `<span class="admin-date">${escHtml(l.mood)}</span>` : ''}
+      </div>
+      <p class="admin-body">${escHtml(l.content)}</p>
+      <div class="admin-actions">
+        <span style="font-size:.78rem;color:var(--dim);">— ${escHtml(l.from_name)}</span>
+        ${l.is_visible
+          ? `<button class="admin-hide-btn" onclick="adminToggleVisible('${l.id}', false)">Hide letter</button>`
+          : `<button class="admin-show-btn" onclick="adminToggleVisible('${l.id}', true)">Make visible</button>`
+        }
+      </div>
+    </div>`).join('');
+}
+
+async function adminToggleVisible(id, visible){
+  try{
+    const res = await fetch(EDGE_URL, {
+      method: 'POST',
+      headers: EDGE_HEADERS,
+      body: JSON.stringify({ password: adminPassword, action: 'toggleVisible', id, value: visible })
+    });
+    const result = await res.json();
+    if(!result.success){
+      showToast('Could not update: ' + (result.error || 'Unknown error'));
+      return;
+    }
+    const idx = adminLetters.findIndex(l => l.id === id);
+    if(idx > -1) adminLetters[idx].is_visible = visible;
+    renderAdminFeed();
+    showToast(visible ? 'Letter is now visible.' : 'Letter hidden from public.');
+  }catch(e){
+    showToast('Error updating letter.');
+  }
+}
+
+// Admin page handled inside showPage directly
+
+buildMarquee();startFeatured();updateStats();showLOTD();runTypewriter();initLetters();
+</script>
+</body>
+</html>
