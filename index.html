@@ -6,26 +6,26 @@
 <title>Unsent — Words that needed to exist somewhere</title>
 <meta name="description" content="A space to release what was never said. Write letters you never sent. Read the ones others couldn't."/>
 <meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://unsent.cloud/"/>
+<link rel="canonical" href="https://theunsent.vercel.app/"/>
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://unsent.cloud/"/>
+<meta property="og:url" content="https://theunsent.vercel.app/"/>
 <meta property="og:title" content="Unsent — Words that needed to exist somewhere"/>
 <meta property="og:description" content="A space to release what was never said. Write letters you never sent. Read the ones others couldn't."/>
-<meta property="og:image" content="https://unsent.cloud/og.jpg"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
+
+
+
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:url" content="https://unsent.cloud/"/>
+<meta name="twitter:url" content="https://theunsent.vercel.app/"/>
 <meta name="twitter:title" content="Unsent"/>
 <meta name="twitter:description" content="A space to release what was never said."/>
-<meta name="twitter:image" content="https://unsent.cloud/og.jpg"/>
+
 
 <!-- Favicon inline — no external files needed -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230b0906'/><line x1='7' y1='9' x2='23' y2='9' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/><line x1='23' y1='9' x2='7' y2='23' stroke='%23c85c3e' stroke-width='2.2' stroke-linecap='round'/><line x1='7' y1='23' x2='23' y2='23' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/></svg>"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230b0906'/><text x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='20' text-anchor='middle' fill='%23f0e2cc'>u</text></svg>"/>
 <meta name="theme-color" content="#0b0906"/>
 
 <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
@@ -73,9 +73,8 @@ button{font-family:var(--body);cursor:pointer;}
 .fade-in{animation:fadeIn .8s ease both;}
 .slide-in{animation:slideIn .4s ease both;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);background:rgba(11,9,6,.96);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;}
-.logo{background:none;border:none;cursor:pointer;color:var(--text);text-align:left;padding:0;}
-.logo span:first-child{font-family:var(--serif);font-size:1.45rem;font-style:italic;display:block;letter-spacing:.02em;}
-.logo span:last-child{font-size:.6rem;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;display:block;margin-top:-1px;}
+.logo{background:none;border:none;cursor:pointer;color:var(--text);text-align:left;padding:0;display:flex;align-items:center;}
+.logo svg{display:block;}
 .nav-links{display:flex;gap:1.75rem;align-items:center;}
 .nav-btn{background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.92rem;letter-spacing:.07em;padding-bottom:3px;border-bottom:1px solid transparent;transition:all .2s;color:var(--muted);}
 .nav-btn.active{color:var(--text);border-bottom-color:var(--accent);}
@@ -218,6 +217,7 @@ label{display:block;color:var(--muted);font-size:.68rem;letter-spacing:.18em;tex
 
 footer{border-top:1px solid var(--border);padding:1.75rem 2rem;text-align:center;}
 footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
+.footer-logo{display:flex;justify-content:center;margin-bottom:.85rem;opacity:0.25;}
 .success-screen{text-align:center;padding:5rem 0;}
 .success-screen .big{font-family:var(--serif);font-size:2.5rem;font-style:italic;margin-bottom:.75rem;animation:fadeUp .6s ease;}
 .success-screen .sub{color:var(--muted);line-height:1.7;animation:fadeUp .6s .15s ease both;}
@@ -273,7 +273,7 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 .tier-features li::before{content:'—';color:var(--dim);flex-shrink:0;}
 /* Physical card */
 .card-preview{background:var(--surface);border:1px solid var(--border2);padding:1.5rem;margin:1rem 0;font-family:var(--alt);font-style:italic;line-height:2;color:var(--text);font-size:1rem;min-height:110px;position:relative;}
-.card-preview::after{content:'unsent.cloud';position:absolute;bottom:.75rem;right:1rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-style:normal;font-family:var(--body);}
+.card-preview::after{content:'theunsent.vercel.app';position:absolute;bottom:.75rem;right:1rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-style:normal;font-family:var(--body);}
 
 /* ─── FROM NEW DOC ─── */
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
@@ -380,9 +380,13 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <nav>
-  <button class="logo" onclick="showPage('home')">
-    <span>Unsent</span>
-    <span>World</span>
+  <button class="logo" onclick="showPage('home')" aria-label="Unsent — home">
+    <svg width="110" height="32" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- fading wordmark: u=full, n=slightly dim, s=mid, e=dimmer, n=dim, t=ghost -->
+      <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="26" y="24" letter-spacing="-0.3">
+        <tspan fill="#f0e2cc">u</tspan><tspan fill="#cbb99d">n</tspan><tspan fill="#a0896e">s</tspan><tspan fill="#72604a">e</tspan><tspan fill="#4a3a28">n</tspan><tspan fill="#2a1f12">t</tspan>
+      </text>
+    </svg>
   </button>
   <div class="nav-links">
     <button class="nav-btn active" id="nav-home" onclick="showPage('home')">Home</button>
@@ -398,6 +402,9 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 </nav>
 
 <div class="mobile-nav" id="mobile-nav">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1rem;opacity:0.3;">
+    <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="38" x="24" y="36" text-anchor="middle" fill="#f0e2cc">u</text>
+  </svg>
   <button class="mobile-nav-btn" id="mnav-home" onclick="showPage('home');toggleMobileNav()">Home</button>
   <button class="mobile-nav-btn" id="mnav-write" onclick="showPage('write');toggleMobileNav()">Write</button>
   <button class="mobile-nav-btn" id="mnav-letters" onclick="showPage('letters');toggleMobileNav()">Letters</button>
@@ -408,6 +415,13 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 
 <!-- HOME -->
 <div id="page-home" class="page fade-up" style="position:relative;z-index:1;">
+  <div style="margin-bottom:2.5rem;opacity:0.18;">
+    <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="42" y="38" letter-spacing="-0.5">
+        <tspan fill="#f0e2cc">u</tspan><tspan fill="#cbb99d">n</tspan><tspan fill="#a0896e">s</tspan><tspan fill="#72604a">e</tspan><tspan fill="#4a3a28">n</tspan><tspan fill="#2a1f12">t</tspan>
+      </text>
+    </svg>
+  </div>
   <p id="home-tagline" style="color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;margin-bottom:2rem;opacity:0;transition:opacity 1.2s ease 0.3s;">A space to release what was never said</p>
   <h1 id="home-headline" style="font-family:var(--serif);font-size:clamp(1.9rem,5vw,3rem);font-weight:400;line-height:1.35;margin-bottom:3rem;min-height:6rem;">
     <span id="tw-out"></span><span class="tw-cursor" id="tw-cursor"></span>
@@ -541,6 +555,13 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
   </div>
 
   <div id="write-success" class="success-screen hidden">
+    <div style="margin-bottom:1.5rem;opacity:0.12;">
+      <svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto;display:block;">
+        <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="34" y="31" letter-spacing="-0.4">
+          <tspan fill="#f0e2cc">u</tspan><tspan fill="#cbb99d">n</tspan><tspan fill="#a0896e">s</tspan><tspan fill="#72604a">e</tspan><tspan fill="#4a3a28">n</tspan><tspan fill="#2a1f12">t</tspan>
+        </text>
+      </svg>
+    </div>
     <p class="big" id="success-msg">Released.</p>
     <p class="sub" id="success-sub">Your words are out in the world now.</p>
   </div>
@@ -710,6 +731,12 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
   </div>
 
   <div style="text-align:center;padding:1rem 0 2rem;">
+    <div style="margin-bottom:1.5rem;opacity:0.15;">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto;display:block;">
+        <circle cx="28" cy="28" r="27" stroke="#3a3025" stroke-width="1"/>
+        <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="30" x="28" y="37" text-anchor="middle" fill="#f0e2cc">u</text>
+      </svg>
+    </div>
     <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;line-height:1.7;">You found this place for a reason.</p>
     <button class="btn-primary" onclick="showPage('write')">Write your letter</button>
   </div>
@@ -1007,8 +1034,15 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 </div>
 
 <footer>
+  <div class="footer-logo">
+    <svg width="100" height="30" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="24" y="23" letter-spacing="-0.3">
+        <tspan fill="#f0e2cc">u</tspan><tspan fill="#cbb99d">n</tspan><tspan fill="#a0896e">s</tspan><tspan fill="#72604a">e</tspan><tspan fill="#4a3a28">n</tspan><tspan fill="#2a1f12">t</tspan>
+      </text>
+    </svg>
+  </div>
   <p>
-    unsent.cloud · words that needed to exist somewhere · 
+    theunsent.vercel.app · words that needed to exist somewhere · 
     <span style="cursor:pointer;text-decoration:underline;text-underline-offset:3px;" onclick="showPage('about')">our story</span> · 
     <a href="/privacy" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">privacy</a> · 
     <a href="/terms" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">terms</a> · 
@@ -1748,7 +1782,7 @@ function downloadCard(){
 
 function getShareText(){
   if(!shareLetter) return '';
-  return `To ${shareLetter.to}\n\n\u201c${shareLetter.content}\u201d\n\n\u2014 ${shareLetter.from}\n\nunsent.cloud`;
+  return `To ${shareLetter.to}\n\n\u201c${shareLetter.content}\u201d\n\n\u2014 ${shareLetter.from}\n\ntheunsent.vercel.app`;
 }
 function copyLetter(){
   if(!shareLetter) return;
@@ -1761,7 +1795,7 @@ function shareViaWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponen
 function shareViaInstagram(){navigator.clipboard.writeText(getShareText()).then(()=>{showToast('Copied. Open Instagram Stories and paste.');});}
 function shareViaTwitter(){
   const p=shareLetter.content.length>200?shareLetter.content.substring(0,200)+'\u2026':shareLetter.content;
-  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(`"${p}"\n\n\u2014 unsent.cloud`),'_blank');
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(`"${p}"\n\n\u2014 theunsent.vercel.app`),'_blank');
 }
 
 function openModal(id){
