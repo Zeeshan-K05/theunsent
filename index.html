@@ -25,16 +25,16 @@
 <meta name="twitter:image" content="https://unsent.cloud/og.jpg"/>
 
 <!-- Favicon inline — no external files needed -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230b0906'/><line x1='7' y1='9' x2='23' y2='9' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/><line x1='23' y1='9' x2='7' y2='23' stroke='%23c85c3e' stroke-width='2.2' stroke-linecap='round'/><line x1='7' y1='23' x2='23' y2='23' stroke='%23c85c3e' stroke-width='2.5' stroke-linecap='round'/></svg>"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230b0906'/><defs><linearGradient id='uf' x1='0' y1='0' x2='1' y2='0'><stop offset='0%25' stop-color='%23d4b07a'/><stop offset='60%25' stop-color='%23c85c3e'/><stop offset='100%25' stop-color='%23c85c3e' stop-opacity='0.15'/></linearGradient></defs><path d='M8 8 L8 19 Q8 25 16 25 Q24 25 24 19 L24 8' stroke='url(%23uf)' stroke-width='2.5' stroke-linecap='round' fill='none'/></svg>"/>
 <meta name="theme-color" content="#0b0906"/>
 
-<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics 4 — uncomment and replace G-XXXXXXXXXX with your real Measurement ID -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  // window.dataLayer = window.dataLayer || [];
+  // function gtag(){dataLayer.push(arguments);}
+  // gtag('js', new Date());
+  // gtag('config', 'G-XXXXXXXXXX');
   // Global error tracking
   window.addEventListener('error', function(e) {
     console.error('[Unsent Error]', e.message, e.filename, e.lineno);
@@ -48,6 +48,7 @@
   const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -75,8 +76,10 @@ button{font-family:var(--body);cursor:pointer;}
 .slide-in{animation:slideIn .4s ease both;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);background:rgba(11,9,6,.96);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;}
 .logo{background:none;border:none;cursor:pointer;color:var(--text);text-align:left;padding:0;}
-.logo span:first-child{font-family:var(--serif);font-size:1.45rem;font-style:italic;display:block;letter-spacing:.02em;}
-.logo span:last-child{font-size:.6rem;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;display:block;margin-top:-1px;}
+.logo span{font-family:var(--serif);font-size:1.55rem;font-style:italic;letter-spacing:.08em;text-transform:lowercase;background:linear-gradient(90deg,#d4b07a 0%,#c8a265 30%,#a07850 55%,rgba(140,100,60,.3) 78%,rgba(140,100,60,.08) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo:hover span{background:linear-gradient(90deg,#e0c48e 0%,#d4b07a 35%,#c8a265 60%,rgba(160,120,80,.45) 82%,rgba(160,120,80,.15) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo::after{content:'';display:block;width:24px;height:1px;background:linear-gradient(90deg,rgba(200,162,101,.5),transparent);margin-top:4px;transition:width .4s cubic-bezier(.22,1,.36,1);}
+.logo:hover::after{width:100%;}
 .nav-links{display:flex;gap:1.75rem;align-items:center;}
 .nav-btn{background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.92rem;letter-spacing:.07em;padding-bottom:3px;border-bottom:1px solid transparent;transition:all .2s;color:var(--muted);}
 .nav-btn.active{color:var(--text);border-bottom-color:var(--accent);}
@@ -339,8 +342,6 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 .about-pull{font-family:var(--serif);font-size:1.25rem;font-style:italic;font-weight:400;color:var(--text);line-height:1.6;margin-bottom:2rem;}
 
 @media(max-width:640px){
-  .capsule-steps-strip{flex-direction:column;}
-  .capsule-steps-strip .cs-divider-v{width:100%;height:1px;}
   nav{padding:1rem 1.25rem;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
@@ -373,17 +374,24 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 .admin-status{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .5rem;border:1px solid;}
 .admin-status.visible{color:var(--gold);border-color:var(--goldlow);}
 .admin-status.hidden-status{color:var(--accent);border-color:var(--alow);}
+/* Auth */
+.auth-indicator{display:flex;align-items:center;gap:.5rem;}
+.auth-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;box-shadow:0 0 6px rgba(184,149,58,.3);}
+.auth-email-display{font-size:.72rem;color:var(--muted);letter-spacing:.03em;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.auth-out-btn{background:none;border:none;color:var(--dim);font-family:var(--body);font-size:.68rem;cursor:pointer;padding:0;letter-spacing:.04em;transition:color .2s;}
+.auth-out-btn:hover{color:var(--muted);}
+.auth-prompt{background:var(--surface);border:1px solid var(--border2);border-left:2px solid var(--gold);padding:1.5rem;margin-bottom:1.5rem;}
 </style>
 </head>
 <body>
 
+<noscript><div style="text-align:center;padding:4rem 2rem;color:#f0e2cc;font-family:Georgia,serif;"><p style="font-size:1.3rem;font-style:italic;margin-bottom:1rem;">Unsent needs JavaScript to work.</p><p style="color:#7a6e63;">Please enable JavaScript in your browser settings.</p></div></noscript>
 <div class="progress-bar" id="progress-bar" style="width:0"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <nav>
-  <button class="logo" onclick="showPage('home')">
-    <span>Unsent</span>
-    <span>World</span>
+  <button class="logo" onclick="showPage('home')" aria-label="unsent — Home">
+    <span>unsent</span>
   </button>
   <div class="nav-links">
     <button class="nav-btn active" id="nav-home" onclick="showPage('home')">Home</button>
@@ -392,6 +400,11 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
     <button class="nav-btn" id="nav-dead" onclick="showPage('dead')" style="color:#4a3a2f;">To the gone</button>
     <button class="nav-btn" id="nav-about" onclick="showPage('about')">About</button>
     <button style="background:var(--alow);border:1px solid var(--accent);color:var(--text);font-family:var(--body);font-size:.82rem;padding:.28rem .85rem;cursor:pointer;letter-spacing:.04em;transition:all .2s;" onclick="showPage('capsule')">⏳ Capsule</button>
+    <div class="auth-indicator hidden" id="auth-indicator">
+      <span class="auth-dot"></span>
+      <span class="auth-email-display" id="auth-email-display"></span>
+      <button class="auth-out-btn" onclick="signOut()">sign out</button>
+    </div>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
     <span></span><span></span><span></span>
@@ -413,7 +426,12 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
   <h1 id="home-headline" style="font-family:var(--serif);font-size:clamp(1.9rem,5vw,3rem);font-weight:400;line-height:1.35;margin-bottom:3rem;min-height:6rem;">
     <span id="tw-out"></span><span class="tw-cursor" id="tw-cursor"></span>
   </h1>
-  <p id="home-letter-count" style="font-size:.75rem;color:var(--dim);letter-spacing:.06em;margin-bottom:3rem;"></p>
+  <p id="home-letter-count" style="font-size:.75rem;color:var(--dim);letter-spacing:.06em;margin-bottom:2rem;"></p>
+  <div class="lotd-strip" id="lotd-strip">
+    <p class="lotd-tag">Letter of the day</p>
+    <p class="lotd-text" id="lotd-text"></p>
+    <p class="lotd-from" id="lotd-from"></p>
+  </div>
   <div class="featured-block" id="featured-block">
     <p class="feat-tag" id="f-to"></p>
     <p class="feat-text" id="f-content"></p>
@@ -509,8 +527,7 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
       </label>
     </div>
     <p class="private-hint hidden" id="private-hint">🔒 This letter will stay yours alone.</p>
-
-    <!-- ANON / PHYSICAL (fade when private) -->
+    <p class="hidden" id="private-auth-hint" style="font-size:.75rem;color:var(--gold);padding:.4rem 0;line-height:1.6;">💡 <span style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;" onclick="openModal('auth-modal')">Sign in with your email</span> to save private letters forever — across any device.</p>
     <div id="delivery-section">
       <p style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Coming soon</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.75rem;">
@@ -538,7 +555,7 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 
     <!-- Consent -->
     <label style="display:flex;align-items:flex-start;gap:.75rem;padding:1rem;background:var(--surface);border:1px solid var(--border2);margin-top:1rem;margin-bottom:1.5rem;cursor:pointer;">
-      <input type="checkbox" id="consent-checkbox" style="width:16px;height:16px;margin-top:3px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;"/>
+      <input type="checkbox" id="consent-checkbox" onchange="checkForm()" style="width:16px;height:16px;margin-top:3px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;"/>
       <div>
         <p style="font-size:.88rem;color:var(--text);margin-bottom:.25rem;">I'm okay with this letter appearing on the public feed</p>
         <p style="font-size:.75rem;color:var(--muted);line-height:1.5;">Only visible after admin approval. You stay anonymous unless you added your name.</p>
@@ -628,6 +645,11 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
   <!-- V5: ARCHIVE -->
   <div id="ltab-archive" class="hidden">
     <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.5rem;">Your private letters. Only you can read them.</p>
+    <div id="archive-auth-prompt" class="auth-prompt">
+      <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;margin-bottom:.5rem;color:var(--text);">Your letters, on any device.</p>
+      <p style="font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;">Sign in with just your email — no passwords, no profiles. Your words stay yours.</p>
+      <button class="btn-ghost" onclick="openModal('auth-modal')" style="font-size:.85rem;">Save my archive →</button>
+    </div>
     <div id="archive-feed"></div>
     <div id="archive-empty" class="hidden" style="text-align:center;padding:2.5rem 0;">
       <p style="font-family:var(--serif);font-style:italic;color:var(--dim);margin-bottom:.5rem;">No private letters yet.</p>
@@ -1016,12 +1038,34 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
   </div>
 </div>
 
+<!-- AUTH MODAL -->
+<div id="auth-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('auth-modal')">✕</button>
+    <h3>Save your letters</h3>
+    <p style="font-style:italic;color:var(--text);font-size:.95rem;margin-bottom:.25rem;">"Some things are only meant for you."</p>
+    <p>Enter your email. We'll send a link — no passwords, no accounts.</p>
+    <div id="auth-form-section">
+      <div class="field">
+        <label>Your email</label>
+        <input id="auth-email" type="email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')handleMagicLink()"/>
+      </div>
+      <button class="btn-primary" id="auth-send-btn" onclick="handleMagicLink()" style="width:100%;">Send me a link</button>
+    </div>
+    <div id="auth-sent" class="hidden" style="text-align:center;padding:1.5rem 0;">
+      <p style="font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--accent);margin-bottom:.5rem;">Check your email ✓</p>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">Click the link we sent to access your archive from any device. You can close this.</p>
+    </div>
+    <p style="font-size:.72rem;color:var(--dim);margin-top:.75rem;text-align:center;line-height:1.6;">No passwords · No profile · Just your archive</p>
+  </div>
+</div>
+
 <footer>
   <p>
     unsent.cloud · words that needed to exist somewhere · 
     <span style="cursor:pointer;text-decoration:underline;text-underline-offset:3px;" onclick="showPage('about')">our story</span> · 
-    <a href="/privacy" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">privacy</a> · 
-    <a href="/terms" style="color:var(--vdim);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--muted)'" onmouseout="this.style.borderColor='var(--border2)'">terms</a> · 
+    <span style="cursor:pointer;color:var(--vdim);border-bottom:1px solid var(--border2);padding-bottom:1px;" onclick="showToast('Privacy policy coming soon.')">privacy</span> · 
+    <span style="cursor:pointer;color:var(--vdim);border-bottom:1px solid var(--border2);padding-bottom:1px;" onclick="showToast('Terms of use coming soon.')">terms</span> · 
     <span onclick="showPage('admin')" style="cursor:pointer;color:var(--border2);font-size:.7rem;user-select:none;" title="admin">·</span>
   </p>
 </footer>
@@ -1095,8 +1139,8 @@ async function initLetters(){
   lettersLoading = false;
   updateStats();
 }
-let deadLetters=JSON.parse(JSON.stringify(DEAD_SEEDS));
-let capsules=[];
+let deadLetters=(function(){try{const s=localStorage.getItem('unsent_dead');if(s){const p=JSON.parse(s);if(Array.isArray(p)&&p.length)return p;}return JSON.parse(JSON.stringify(DEAD_SEEDS));}catch(e){return JSON.parse(JSON.stringify(DEAD_SEEDS));}}());
+let capsules=(function(){try{const s=localStorage.getItem('unsent_capsules');if(s){const p=JSON.parse(s);if(Array.isArray(p))return p;}return[];}catch(e){return[];}})();
 let currentFilter='All',currentMoodFilter='All',selectedLang='EN',selectedMood='';
 let featIdx=0,featTimer=null,shareLetter=null,mobileNavOpen=false,isPrivate=false,burnOn=false;
 let activeModalId=null,lastModalTrigger=null,lastModalFocusedElement=null;
@@ -1302,10 +1346,7 @@ function showLOTD(){
 }
 
 // Featured letters on home page — uses live DB letters once loaded, falls back to BASE_LETTERS
-function getFeaturedLetters(){
-  const pool = letters.length >= 5 ? letters : BASE_LETTERS;
-  return pool.slice(0, 5);
-}
+
 const FEAT=BASE_LETTERS.slice(0,5);
 function startFeatured(){stopFeatured();renderFeat();featTimer=setInterval(()=>{featIdx=(featIdx+1)%FEAT.length;renderFeat();},5000);}
 function stopFeatured(){if(featTimer){clearInterval(featTimer);featTimer=null;}}
@@ -1339,12 +1380,20 @@ function toggleBurn(){burnOn=!burnOn;const el=document.getElementById('burn-togg
 function togglePrivate(){
   isPrivate=document.getElementById('private-toggle').checked;
   document.getElementById('private-hint').classList.toggle('hidden',!isPrivate);
+  const hint=document.getElementById('private-auth-hint');
+  if(hint) hint.classList.toggle('hidden',!isPrivate||!!currentUser);
   const ds=document.getElementById('delivery-section');
   ds.style.opacity=isPrivate?'.3':'1';
   ds.style.pointerEvents=isPrivate?'none':'';
   const rb=document.getElementById('release-btn');if(rb)rb.disabled=!canSubmit();
 }
-function canSubmit(){return !!(document.getElementById('w-to').value.trim()&&document.getElementById('w-content').value.trim());}
+function canSubmit(){
+  const to = document.getElementById('w-to').value.trim();
+  const content = document.getElementById('w-content').value.trim();
+  const consent = document.getElementById('consent-checkbox').checked;
+  const priv = document.getElementById('private-toggle').checked;
+  return !!(to && content && (consent || priv));
+}
 function checkForm(){
   const ok=canSubmit();
   const rb=document.getElementById('release-btn');if(rb)rb.disabled=!ok;
@@ -1381,7 +1430,12 @@ async function submitLetter(to,from,content,anon,priv){
     date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})};
   addAuditEvent('letter_submitted',{id:nl.id,private:nl.private,burn:nl.burn,lang:nl.lang,mood:nl.mood||null});
   if(priv){
-    savePrivate(nl);
+    if(currentUser){
+      const saved = await savePrivateLetterToDB(nl);
+      if(saved) nl.id = saved.id;
+    } else {
+      savePrivate(nl);
+    }
   } else {
     const saved = await saveLetterToDB(nl);
     if(saved){ nl.id = saved.id; }
@@ -1446,8 +1500,15 @@ function toggleCol(key){
   tog.textContent=open?'Close ↑':'Read collection ↓';
 }
 
-function renderArchive(){
-  const pl=loadPrivate();
+async function renderArchive(){
+  const authPrompt=document.getElementById('archive-auth-prompt');
+  if(authPrompt) authPrompt.classList.toggle('hidden',!!currentUser);
+  let pl;
+  if(currentUser){
+    pl = await loadPrivateFromDB();
+  } else {
+    pl = loadPrivate();
+  }
   const feed=document.getElementById('archive-feed'),empty=document.getElementById('archive-empty');
   if(!pl.length){feed.innerHTML='';empty.classList.remove('hidden');return;}
   empty.classList.add('hidden');
@@ -1464,14 +1525,21 @@ function renderArchive(){
     </div>`).join('');
 }
 
-function deletePrivateLetter(id){
-  try{
-    const remaining=loadPrivate().filter(l=>l.id!==id);
-    localStorage.setItem(STORAGE_KEYS.privateLetters,JSON.stringify(remaining));
-    addAuditEvent('private_letter_deleted',{id});
-    renderArchive();
-    showToast('Letter deleted.');
-  }catch(e){showToast('Could not delete. Try again.');}
+async function deletePrivateLetter(id){
+  if(currentUser){
+    try{
+      const { error } = await db.from('letters').delete().eq('id', id).eq('user_id', currentUser.id);
+      if(error){ showToast('Could not delete. Try again.'); return; }
+    }catch(e){ showToast('Could not delete. Try again.'); return; }
+  } else {
+    try{
+      const remaining=loadPrivate().filter(l=>l.id!==id);
+      localStorage.setItem(STORAGE_KEYS.privateLetters,JSON.stringify(remaining));
+    }catch(e){showToast('Could not delete. Try again.'); return;}
+  }
+  addAuditEvent('private_letter_deleted',{id});
+  renderArchive();
+  showToast('Letter deleted.');
 }
 
 // Letters feed
@@ -1800,7 +1868,7 @@ window.addEventListener('scroll',()=>{
   document.getElementById('progress-bar').style.width=pct+'%';
 });
 
-['anon-modal','share-modal','physical-modal','private-tier-modal','waitlist-modal'].forEach(id=>{
+['anon-modal','share-modal','physical-modal','private-tier-modal','waitlist-modal','auth-modal'].forEach(id=>{
   const modal=document.getElementById(id);
   if(!modal)return;
   modal.setAttribute('aria-hidden','true');
@@ -1844,6 +1912,7 @@ function submitDead(){
   if(!to||!content)return;
   deadLetters.unshift({id:Date.now(),to,from,content});
   deadLetters=deadLetters.slice(0,300);
+  try{localStorage.setItem('unsent_dead',JSON.stringify(deadLetters));}catch(e){}
   addAuditEvent('dead_letter_submitted',{toLen:to.length,contentLen:content.length});
   document.getElementById('dead-form').classList.add('hidden');
   document.getElementById('dead-success').classList.remove('hidden');
@@ -1887,6 +1956,7 @@ function submitCapsule(){
   const dateStr=d.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
   capsules.unshift({id:Date.now(),to:'my future self',content,contact,months:delay,deliverOn:dateStr,sealed:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
   capsules=capsules.slice(0,200);
+  try{localStorage.setItem('unsent_capsules',JSON.stringify(capsules));}catch(e){}
   addAuditEvent('capsule_submitted',{months:delay,contactKind:contact.includes('@')?'email':'phone'});
   // TODO: Replace YOUR_CAPSULE_FORM_ID with your Formspree form ID from formspree.io
   fetch('https://formspree.io/f/YOUR_CAPSULE_FORM_ID',{
@@ -2120,7 +2190,7 @@ function renderAdminFeed(){
   let list = adminLetters;
   if(adminFilter === 'pending') list = list.filter(l => !l.is_visible);
   if(adminFilter === 'visible') list = list.filter(l => l.is_visible);
-  if(adminFilter === 'hidden') list = list.filter(l => !l.is_visible);
+  if(adminFilter === 'hidden') list = list.filter(l => l.is_visible === false);
   if(!list.length){
     feed.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--muted);font-style:italic;">No letters here.</p>';
     return;
@@ -2169,7 +2239,107 @@ async function adminToggleVisible(id, visible){
 
 // Admin page handled inside showPage directly
 
-buildMarquee();startFeatured();updateStats();showLOTD();runTypewriter();initLetters();
+// ── AUTH ─────────────────────────────────────────────────────────────────────
+let currentUser = null;
+
+async function initAuth(){
+  try{
+    const { data:{ session } } = await db.auth.getSession();
+    if(session) currentUser = session.user;
+    db.auth.onAuthStateChange((event, session)=>{
+      currentUser = session?.user || null;
+      updateAuthUI();
+      if(event === 'SIGNED_IN'){
+        showToast('Signed in ✓');
+        closeModal('auth-modal');
+      }
+    });
+    updateAuthUI();
+  }catch(e){ console.error('Auth init error:', e); }
+}
+
+function updateAuthUI(){
+  const indicator = document.getElementById('auth-indicator');
+  const emailDisplay = document.getElementById('auth-email-display');
+  const authPrompt = document.getElementById('archive-auth-prompt');
+  const privateHint = document.getElementById('private-auth-hint');
+  if(currentUser){
+    if(indicator) indicator.classList.remove('hidden');
+    if(emailDisplay) emailDisplay.textContent = currentUser.email;
+    if(authPrompt) authPrompt.classList.add('hidden');
+    if(privateHint) privateHint.classList.add('hidden');
+  } else {
+    if(indicator) indicator.classList.add('hidden');
+    if(authPrompt) authPrompt.classList.remove('hidden');
+  }
+}
+
+async function handleMagicLink(){
+  const email = document.getElementById('auth-email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showToast('Enter a valid email.'); return; }
+  const btn = document.getElementById('auth-send-btn');
+  if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+  try{
+    const { error } = await db.auth.signInWithOtp({
+      email,
+      options:{ emailRedirectTo: window.location.origin + window.location.pathname }
+    });
+    if(error){
+      showToast('Could not send link: ' + error.message);
+      if(btn){ btn.disabled=false; btn.textContent='Send me a link'; }
+      return;
+    }
+    document.getElementById('auth-form-section').classList.add('hidden');
+    document.getElementById('auth-sent').classList.remove('hidden');
+    addAuditEvent('magic_link_sent',{domain:email.split('@')[1]||''});
+  }catch(e){
+    showToast('Something went wrong. Try again.');
+    if(btn){ btn.disabled=false; btn.textContent='Send me a link'; }
+  }
+}
+
+async function signOut(){
+  try{
+    await db.auth.signOut();
+    currentUser = null;
+    updateAuthUI();
+    showToast('Signed out.');
+  }catch(e){ showToast('Could not sign out.'); }
+}
+
+async function savePrivateLetterToDB(nl){
+  if(!currentUser) return null;
+  try{
+    const { data, error } = await db.from('letters').insert([{
+      to_name: nl.to, from_name: nl.from, content: nl.content,
+      mood: nl.mood||null, lang: nl.lang||'EN', city: nl.city||null,
+      felt_count:0, is_visible:false, is_private:true, user_id: currentUser.id
+    }]).select().single();
+    if(error){ console.error('Save private DB error:', error); return null; }
+    return data;
+  }catch(e){ console.error('savePrivateLetterToDB error:', e); return null; }
+}
+
+async function loadPrivateFromDB(){
+  if(!currentUser) return [];
+  try{
+    const { data, error } = await db.from('letters')
+      .select('*')
+      .eq('user_id', currentUser.id)
+      .eq('is_private', true)
+      .order('created_at',{ascending:false})
+      .limit(200);
+    if(error){ console.error('Load private DB error:', error); return []; }
+    return (data||[]).map(row=>({
+      id: row.id, to: row.to_name, from: row.from_name, content: row.content,
+      mood: row.mood||'', lang: row.lang||'EN', city: row.city||'',
+      private: true,
+      date: new Date(row.created_at).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})
+    }));
+  }catch(e){ console.error('loadPrivateFromDB error:', e); return []; }
+}
+
+buildMarquee();startFeatured();updateStats();showLOTD();runTypewriter();initLetters();initAuth();
 </script>
 </body>
 </html>
