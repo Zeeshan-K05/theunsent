@@ -1887,8 +1887,7 @@ function submitCapsule(){
   capsules=capsules.slice(0,200);
   try{localStorage.setItem('unsent_capsules',JSON.stringify(capsules));}catch(e){}
   addAuditEvent('capsule_submitted',{months:delay,contactKind:contact.includes('@')?'email':'phone'});
-  // TODO: Replace YOUR_CAPSULE_FORM_ID with your Formspree form ID from formspree.io
-  fetch('https://formspree.io/f/YOUR_CAPSULE_FORM_ID',{
+  fetch('https://formspree.io/f/xwvyknwe',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({contact,deliverOn:dateStr,months:delay,contactKind:contact.includes('@')?'email':'phone',source:'time-capsule'})
@@ -1921,8 +1920,7 @@ function subscribeDigest(){
   const email=document.getElementById('digest-email').value.trim();
   const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(!emailPattern.test(email)){showToast('Enter a valid email address.');return;}
-  // TODO: Replace YOUR_DIGEST_FORM_ID with your Formspree form ID from formspree.io
-  fetch('https://formspree.io/f/YOUR_DIGEST_FORM_ID',{
+  fetch('https://formspree.io/f/xwvyknwe',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({email,source:'sunday-digest'})
@@ -1985,8 +1983,7 @@ function submitWaitlist(){
   if(!isActionAllowed('waitlist-submit',900)){showToast('Please wait a moment.');return;}
   const v=truncateText(document.getElementById('waitlist-contact').value,LIMITS.contact);
   if(!v)return;
-  // TODO: Replace YOUR_WAITLIST_FORM_ID with your Formspree form ID from formspree.io
-  fetch('https://formspree.io/f/YOUR_WAITLIST_FORM_ID',{
+  fetch('https://formspree.io/f/xwvyknwe',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({contact:v,feature:waitlistFeature||'unknown',contactKind:v.includes('@')?'email':'phone'})
@@ -2171,6 +2168,11 @@ async function adminToggleVisible(id, visible){
 function capsuleWaitlist(){
   const email=document.getElementById('capsule-waitlist-email').value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Enter a valid email.');return;}
+  fetch('https://formspree.io/f/xwvyknwe',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email,source:'capsule-waitlist'})
+  }).catch(()=>{});
   addAuditEvent('capsule_waitlist',{email});
   document.getElementById('capsule-waitlist-ok').classList.remove('hidden');
   showToast('You\'re on the list!');
