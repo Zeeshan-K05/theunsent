@@ -917,56 +917,17 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
     </div>
   </div>
 
-  <!-- Form card -->
-  <div id="capsule-form-wrap" style="border:1px solid var(--border2);border-top:2px solid var(--accent);background:var(--surface);padding:2rem;">
-    <p style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;">Begin your letter</p>
-
-    <div class="field">
-      <label>Your letter</label>
-      <textarea id="c-content" rows="10" placeholder="Dear me,&#10;&#10;Right now I am feeling…" oninput="checkCapsule()"></textarea>
+  <!-- Coming Soon -->
+  <div style="border:1px solid var(--border2);border-top:2px solid var(--accent);background:var(--surface);padding:3rem 2rem;text-align:center;">
+    <p style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Coming Soon</p>
+    <p style="font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--text);margin-bottom:.75rem;">This capsule is still being built.</p>
+    <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1.75rem;">We're making sure your future letters arrive exactly when they should.<br>Leave your email — we'll tell you when it's ready.</p>
+    <div style="display:flex;gap:.5rem;max-width:380px;margin:0 auto;">
+      <input id="capsule-waitlist-email" type="email" placeholder="your@email.com" style="flex:1;padding:.75rem 1rem;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--body);font-size:.88rem;"/>
+      <button onclick="capsuleWaitlist()" style="background:var(--alow);border:1px solid var(--accent);color:var(--text);padding:.75rem 1.25rem;font-family:var(--body);font-size:.85rem;cursor:pointer;white-space:nowrap;transition:all .2s;">Notify me</button>
     </div>
-
-    <!-- Two column: contact + time -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem;">
-      <div>
-        <label>Deliver to <span style="text-transform:none;letter-spacing:0;font-size:.67rem;color:var(--vdim);">(email or WhatsApp)</span></label>
-        <input id="c-contact" type="text" placeholder="your@email.com or 98XXXXXXXX" oninput="checkCapsule()"/>
-      </div>
-      <div>
-        <label>Open in</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;" id="delay-options">
-          <button class="delay-opt" onclick="selectDelay(this,'3')" data-val="3" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">3 months</button>
-          <button class="delay-opt" onclick="selectDelay(this,'6')" data-val="6" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">6 months</button>
-          <button class="delay-opt" onclick="selectDelay(this,'12')" data-val="12" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">1 year</button>
-          <button class="delay-opt" onclick="selectDelay(this,'24')" data-val="24" style="padding:.65rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--body);font-size:.82rem;transition:all .2s;cursor:pointer;">2 years</button>
-        </div>
-        <input type="hidden" id="c-delay"/>
-      </div>
-    </div>
-
-    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1.25rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1rem;">
-      <p style="font-size:.72rem;color:var(--dim);line-height:1.6;">Free forever · Encrypted until delivery day</p>
-      <button id="c-submit" onclick="submitCapsule()" disabled style="background:var(--alow);border:1px solid var(--accent);color:var(--text);padding:.85rem 1.75rem;font-family:var(--serif);font-size:1rem;font-style:italic;letter-spacing:.04em;cursor:pointer;transition:all .25s;white-space:nowrap;">✧ &nbsp;Seal the capsule</button>
-    </div>
-  </div>
-
-  <div id="capsule-success" class="hidden" style="text-align:center;padding:4rem 0;">
-    <p style="font-size:2rem;color:var(--accent);margin-bottom:1rem;">✧</p>
-    <p style="font-family:var(--serif);font-size:2rem;font-style:italic;margin-bottom:.75rem;">Sealed.</p>
-    <p style="color:var(--muted);line-height:1.8;" id="capsule-success-msg"></p>
-  </div>
-
-  <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;"/>
-  <div id="capsule-vault">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
-      <p style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">Your sealed capsules</p>
-      <span style="font-size:.85rem;opacity:.35;">🔒</span>
-    </div>
-    <div id="capsule-list"></div>
-    <div id="capsule-empty" class="hidden" style="text-align:center;padding:2rem 0;">
-      <p style="font-family:var(--serif);font-style:italic;color:var(--dim);margin-bottom:.4rem;">Nothing sealed yet.</p>
-      <p style="font-size:.78rem;color:var(--vdim);">Write your first letter above.</p>
-    </div>
+    <p id="capsule-waitlist-ok" class="hidden" style="color:var(--accent);font-style:italic;font-size:.88rem;margin-top:1rem;">You'll be the first to know. ✓</p>
+    <p style="font-size:.7rem;color:var(--dim);margin-top:1.25rem;">No spam. One email when capsules go live.</p>
   </div>
 </div>
 
@@ -2206,6 +2167,14 @@ async function adminToggleVisible(id, visible){
 }
 
 // Admin page handled inside showPage directly
+
+function capsuleWaitlist(){
+  const email=document.getElementById('capsule-waitlist-email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Enter a valid email.');return;}
+  addAuditEvent('capsule_waitlist',{email});
+  document.getElementById('capsule-waitlist-ok').classList.remove('hidden');
+  showToast('You\'re on the list!');
+}
 
 // ── AUTH ─────────────────────────────────────────────────────────────────────
 let currentUser = null;
