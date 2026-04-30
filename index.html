@@ -1071,38 +1071,11 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
 </footer>
 
 <script>
-const TESTIMONIALS=[
-  {quote:"My father worked 26 years in a government job he hated so I could study engineering. I got placed, moved to Pune, send money home every month. We talk every Sunday. He asks about food, weather, office. In 32 years we have never once said anything real to each other. I wrote him a 4 page letter at 1am on a Tuesday. Told him I see what he gave up. Told him I know. I didn't send it. Some things are too big for WhatsApp.",author:"Deepak, 32",location:"Nagpur"},
-  {quote:"My husband and I have been married 6 years. We don't fight. We don't laugh either. We just exist in the same house. I wrote a letter to the girl I was at 22 standing at the mandap thinking this is fine, this is enough, log kya kahenge. I wanted to tell her — it's not fine. You deserved to ask for more.",author:"Anonymous",location:"Noida"},
-  {quote:"My best friend got married last year. Before that we spoke every day for 8 years. Now it's been 4 months since her last reply. I still wrote her a letter. Told her I miss her and that I feel stupid for missing her this much when she's literally alive and fine. Just not here anymore.",author:"Ritika, 26",location:"Indore"},
-  {quote:"Papa ki death ke baad ghar mein unka phone mila. Last call mera tha. Maine receive nahi kiya tha. Meeting mein tha. Yeh baat teen saal se andar hi thi. Aaj pehli baar kisi ko boli — chahe woh ek website hi kyun na ho.",author:"Anonymous",location:""},
-  {quote:"I was the first in my family to go to college. Everyone was proud. No one asked if I was okay. I wasn't. I wrote a letter to that boy. Told him he wasn't pretending to belong. He was just early.",author:"Sameer, 29",location:"Surat"},
-  {quote:"I wrote to my mother in law. Not to send. Just to say what I swallow every single day at the dinner table with a smile. My hands were shaking the whole time.",author:"Anonymous",location:"Chennai"},
-  {quote:"I left a 7 year relationship because my parents didn't approve. I got married to someone else. I am okay. But I wrote him a letter anyway — not because I want him back. Just because I never got to mourn it properly.",author:"Pooja, 33",location:"Delhi"},
-  {quote:"Three years of therapy couldn't make me say what I wrote here in 11 minutes. I think it's because no one was watching.",author:"Rohan, 29",location:"Delhi"},
-  {quote:"I wrote to my father who passed away last March. I told him I forgave him for leaving before I could. The letter went nowhere. But somehow it reached him.",author:"Anonymous",location:"Mumbai"},
-];
+const TESTIMONIALS=[];
 
-const BASE_LETTERS=[
-  {id:1,to:"my father",from:"Anonymous",lang:"EN",mood:"grief",content:"I never told you how proud I was to be your daughter. Not because you didn't deserve to hear it — but because in our house, we didn't say things like that. We just cooked extra food and stayed up late. I hope you knew anyway.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:2,to:"my younger self",from:"Priya",lang:"EN",mood:"longing",content:"Stop trying so hard to be what everyone else needs you to be. The loneliness you feel right now? It's not a flaw. It's just the gap between who you are and who you haven't met yet.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:3,to:"meri maa",from:"Anonymous",lang:"HI",mood:"longing",content:"तुमने कभी नहीं कहा कि तुम्हें मुझ पर गर्व है। शायद तुम्हें नहीं पता था कि मुझे इसकी कितनी ज़रूरत थी। मैं अभी भी उस एक बात का इंतज़ार करता हूँ।",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:4,to:"my ex best friend",from:"Anonymous",lang:"EN",mood:"grief",content:"You stopped calling after my promotion. I don't think you even realized you did it. That's somehow the part that hurts the most.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:5,to:"the boy from the bus",from:"Shreya",lang:"EN",mood:"longing",content:"We talked every morning for two years. You got off at Andheri. I never asked your name. I wonder if you remember those conversations the way I do.",felt:0,feltByMe:false,private:false,city:'Mumbai',burn:false,burnAt:null,replies:[]},
-  {id:6,to:"mere aap",from:"Arjun",lang:"Hinglish",mood:"gratitude",content:"Yaar, tune jo sacrifice kiya apni family ke liye — log usse weakness samajhte hain. I see it as the bravest thing you ever did. Khud ko thoda credit de.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:7,to:"my boss",from:"Anonymous",lang:"EN",mood:"rage",content:"I quit because of you. Not because the work was hard. Because you made me feel invisible every single day, and I started to believe it.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:8,to:"my sister",from:"Anonymous",lang:"Hinglish",mood:"love",content:"Tu hamesha mujhse zyada samajhdaar lagi sab ko. But I was the one who held you when you cried at 2am. I never needed credit. I just needed you to remember.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:9,to:"the city I left",from:"Meera",lang:"EN",mood:"longing",content:"Delhi, I resented you for 22 years. The heat, the noise, the way you made women feel unsafe in their own streets. I moved to Bangalore and found myself missing you in a way I can't explain to people who didn't grow up inside you.",felt:0,feltByMe:false,private:false,city:'Delhi',burn:false,burnAt:null,replies:[]},
-  {id:10,to:"my body",from:"Anonymous",lang:"EN",mood:"closure",content:"I have been at war with you since I was 14. I measured you, restricted you, punished you for not being small enough. You kept showing up for me anyway. Every morning. Every exam. Every heartbreak. I'm sorry it took me so long.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:11,to:"the friend I lost to cancer",from:"Vikram",lang:"EN",mood:"grief",content:"You would have been 31 this month. I still save voice notes to send you sometimes. Then I remember. Then I keep them anyway.",felt:0,feltByMe:false,private:false,city:'Pune',burn:false,burnAt:null,replies:[]},
-  {id:12,to:"mere papa",from:"Anonymous",lang:"HI",mood:"guilt",content:"जब आपने मुझे medical छोड़कर arts लेने से मना किया था, मैंने आपसे बात करना बंद कर दिया था एक पूरे साल के लिए। आज जब मैं अपने बच्चों को देखता हूँ, समझ आता है कि डर भी एक तरह का प्यार होता है।",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-];
+const BASE_LETTERS=[];
 
-const LOTD_LETTERS=[
-  {text:"I never once heard my mother say she was tired. Not once. She cooked, she cleaned, she attended every parent-teacher meeting, she waited up. It was only after she died that I found her diary. One entry: 'Today I just wanted five minutes alone and I felt guilty for it.' I didn't know. I should have known.",from:"— Anonymous, Pune"},
-  {text:"You were the person I called when anything happened — good or bad — before I even processed it myself. And then one day you weren't. I don't know how to have good news anymore. It just sits there.",from:"— Kavya, 27, Hyderabad"},
-  {text:"Beta, I know I don't say it enough. I don't know how to say it. But every time I make your favourite food when you come home, that's me saying it.",from:"— A father, written on behalf of all of them"},
-];
+const LOTD_LETTERS=[];
 
 const COLLECTIONS={
   fathers:[1,12,20,21],
@@ -1111,23 +1084,13 @@ const COLLECTIONS={
 };
 
 // Collection-specific seed letters
-const COLLECTION_EXTRAS=[
-  {id:20,to:"my father",from:"Anonymous",lang:"EN",mood:"grief",content:"You drove the same 28 kilometres to work for 31 years. Never complained. Never took a sick day. I don't think I ever once asked how you were doing. Not really. I assumed you were fine because you always showed up. I know now that showing up was the whole sentence.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:21,to:"papa",from:"Ananya",lang:"EN",mood:"love",content:"You didn't come to my graduation because there was an office presentation you couldn't miss. I told everyone my father was travelling. I didn't tell them I cried in the bathroom for 20 minutes. I'm not angry anymore. I just want you to know it mattered to me. That's all.",felt:0,feltByMe:false,private:false,city:'Hyderabad',burn:false,burnAt:null,replies:[]},
-  {id:22,to:"the version of me that couldn't sleep",from:"Anonymous",lang:"EN",mood:"grief",content:"It's 3am again. You're lying there replaying every conversation from the last six months looking for the exact moment it started going wrong. You won't find it. Some things don't break at a moment. They just slowly stop working. You can stop looking now.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:23,to:"whoever is awake right now",from:"Anonymous",lang:"Hinglish",mood:"longing",content:"Tum bhi neend nahi aa rahi? Main bhi. Kuch din aisa hota hai na — sab theek hota hai din mein, log baat karte hain, kaam hota hai. But 3 baje ke baad sab wapas aata hai. Akele. Bina permission ke. Hope kartan hoon ki tumhara din kal better ho.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:24,to:"my mother, at her funeral",from:"Anonymous",lang:"EN",mood:"grief",content:"Everyone kept saying how strong you were. How you never complained. I stood there nodding. What I wanted to say — what I couldn't say with all those people around — is that you were allowed to be tired. You were allowed to ask for help. I wish someone had told you that while you were still here.",felt:0,feltByMe:false,private:false,city:'',burn:false,burnAt:null,replies:[]},
-  {id:25,to:"Dadu",from:"Rohan",lang:"EN",mood:"closure",content:"There were 47 people at your funeral. Everyone had a story. I realised I only knew half of yours. The half from before I was born. The half where you were young and scared and figuring things out — that half died with you and I will never stop being sad about that.",felt:0,feltByMe:false,private:false,city:'Kolkata',burn:false,burnAt:null,replies:[]},
-];
+const COLLECTION_EXTRAS=[];
 
 const CITIES=['Mumbai','Delhi','Bangalore','Chennai','Kolkata','Hyderabad','Pune','Jaipur','Lucknow','Surat','Nagpur','Indore'];
 const TAGS=['All','Parent','Friend','Ex','Self','Sibling','Boss','Stranger'];
 const MOODS=['All','grief','love','rage','guilt','longing','gratitude','relief','closure'];
 
-const DEAD_SEEDS=[
-  {id:101,to:"my nana",from:"Anonymous",content:"You died before I could tell you that the garden you planted is still growing. Every summer when the champa blooms I think of you. I think you would have liked who I became. I hope you would have."},
-  {id:102,to:"Rahul bhai",from:"Priya",content:"It's been four years. I still pick up my phone to call you sometimes. Then I remember. The stupid thing is I had your number memorised and now I don't know what to do with that."},
-];
+const DEAD_SEEDS=[];
 
 
 let letters = []; // populated from Supabase on page load
@@ -1337,9 +1300,12 @@ function updateStats(){
 }
 
 function showLOTD(){
+  const lotdStrip=document.getElementById('lotd-strip');
   const lotdText=document.getElementById('lotd-text');
   const lotdFrom=document.getElementById('lotd-from');
   if(!lotdText||!lotdFrom) return;
+  if(!LOTD_LETTERS.length){ if(lotdStrip) lotdStrip.style.display='none'; return; }
+  if(lotdStrip) lotdStrip.style.display='';
   const l=LOTD_LETTERS[new Date().getDate()%LOTD_LETTERS.length];
   lotdText.textContent=l.text;
   lotdFrom.textContent=l.from;
@@ -1348,9 +1314,10 @@ function showLOTD(){
 // Featured letters on home page — uses live DB letters once loaded, falls back to BASE_LETTERS
 
 const FEAT=BASE_LETTERS.slice(0,5);
-function startFeatured(){stopFeatured();renderFeat();featTimer=setInterval(()=>{featIdx=(featIdx+1)%FEAT.length;renderFeat();},5000);}
+function startFeatured(){if(!FEAT.length){document.getElementById('featured-block').style.display='none';return;}stopFeatured();renderFeat();featTimer=setInterval(()=>{featIdx=(featIdx+1)%FEAT.length;renderFeat();},5000);}
 function stopFeatured(){if(featTimer){clearInterval(featTimer);featTimer=null;}}
 function renderFeat(){
+  if(!FEAT.length) return;
   const l=FEAT[featIdx];
   document.getElementById('f-to').textContent='To '+l.to;
   document.getElementById('f-content').textContent=l.content;
@@ -1359,6 +1326,7 @@ function renderFeat(){
 }
 
 function buildMarquee(){
+  if(!TESTIMONIALS.length){document.getElementById('testimonials-home').style.display='none';return;}
   const d=[...TESTIMONIALS,...TESTIMONIALS];
   document.getElementById('marquee-track').innerHTML=d.map(t=>`
     <div class="t-card">
