@@ -1229,7 +1229,8 @@ async function saveLetterToDB(nl){
       lang: nl.lang || 'EN',
       city: nl.city || null,
       felt_count: 0,
-      is_visible: false
+      is_visible: false,
+      consent: document.getElementById('consent-checkbox')?.checked || false
     }]).select().single();
     if(error){ console.error('Supabase insert error:', error); return null; }
     return data;
@@ -2149,6 +2150,8 @@ function renderAdminFeed(){
         <span class="admin-date">${new Date(l.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
         ${l.city ? `<span class="admin-date">📍 ${escHtml(l.city)}</span>` : ''}
         ${l.mood ? `<span class="admin-date">${escHtml(l.mood)}</span>` : ''}
+        ${l.consent ? `<span class="admin-status visible">✓ consented</span>` : `<span class="admin-status hidden-status">no consent</span>`}
+      </div>
       </div>
       <p class="admin-body">${escHtml(l.content)}</p>
       <div class="admin-actions">
