@@ -101,7 +101,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1.25re
 .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border2);padding:.85rem 2rem;font-size:.95rem;letter-spacing:.04em;transition:all .2s;}
 .btn-ghost:hover{border-color:var(--muted);color:var(--text);}
 .btn-sm{padding:.5rem 1.2rem;font-size:.85rem;}
-input,textarea,select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;font-family:var(--body);font-size:1.05rem;line-height:1.75;outline:none;transition:border-color .25s;-webkit-appearance:none;}
+input,textarea,select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;font-family:var(--body);font-size:1.05rem;line-height:1.75;outline:none;transition:border-color .25s;-webkit-appearance:none;appearance:none;}
 input:focus,textarea:focus,select:focus{border-color:var(--border3);}
 input::placeholder,textarea::placeholder{color:var(--dim);}
 textarea{resize:vertical;}
@@ -688,51 +688,7 @@ footer p{color:var(--vdim);font-size:.75rem;letter-spacing:.08em;}
     <p class="about-body" style="color:var(--text);">Because sometimes that's enough.</p>
   </div>
 
-  <!-- ZK Founder mark -->
-  <div style="padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;">
-    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
 
-      <!-- NEW MONOGRAM: Z and K equal, present, crossing -->
-      <div style="flex-shrink:0;width:80px;height:80px;">
-        <svg width="80" height="80" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- outer ring -->
-          <circle cx="130" cy="130" r="112" fill="none" stroke="#1a130d" stroke-width="1"/>
-          <circle cx="130" cy="130" r="104" fill="none" stroke="#150f09" stroke-width="0.5"/>
-
-          <!-- K — gold, equal weight, permanent -->
-          <line x1="96" y1="48" x2="96" y2="212" stroke="#b8953a" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="96" y1="128" x2="162" y2="52" stroke="#b8953a" stroke-width="4" stroke-linecap="round"/>
-          <line x1="96" y1="128" x2="162" y2="208" stroke="#b8953a" stroke-width="4" stroke-linecap="round"/>
-          <!-- K serif feet -->
-          <line x1="88" y1="212" x2="104" y2="212" stroke="#b8953a" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-          <line x1="88" y1="48" x2="104" y2="48" stroke="#b8953a" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-
-          <!-- Z — red, sharp, here -->
-          <line x1="78" y1="68" x2="162" y2="68" stroke="#c85c3e" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="162" y1="68" x2="78" y2="192" stroke="#c85c3e" stroke-width="4" stroke-linecap="round"/>
-          <line x1="78" y1="192" x2="162" y2="192" stroke="#c85c3e" stroke-width="4.5" stroke-linecap="round"/>
-
-          <!-- THE CROSSING POINT — where Z diagonal meets K spine -->
-          <circle cx="96" cy="128" r="10" fill="none" stroke="#c85c3e" stroke-width="0.75" opacity="0.25"/>
-          <circle cx="96" cy="128" r="7" fill="#0b0906" stroke="#b8953a" stroke-width="1" opacity="0.6"/>
-          <circle cx="96" cy="128" r="4.5" fill="#0b0906"/>
-          <!-- left half: gold — K's side -->
-          <path d="M96,123.5 A4.5,4.5 0 0,0 96,132.5 Z" fill="#b8953a" opacity="0.9"/>
-          <!-- right half: red — Z's side -->
-          <path d="M96,123.5 A4.5,4.5 0 0,1 96,132.5 Z" fill="#c85c3e" opacity="0.9"/>
-          <!-- centre dot -->
-          <circle cx="96" cy="128" r="1.5" fill="#f0e2cc" opacity="0.6"/>
-
-          <!-- base hairline -->
-          <line x1="50" y1="236" x2="210" y2="236" stroke="#2a1a0f" stroke-width="0.75"/>
-        </svg>
-      </div>
-
-      <div>
-        <p style="font-size:.85rem;color:var(--muted);font-style:italic;line-height:1.7;">Built by Z. Exists because of K.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- The rule -->
   <div style="position:relative;padding:1.75rem 1.75rem 1.75rem 2rem;border:1px solid var(--border2);margin-bottom:3rem;">
